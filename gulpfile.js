@@ -19,5 +19,5 @@ gulp.task('browserify', function() {
 
 gulp.task('default',['browserify'], function() {
   //watch all files immediately, rerun gulp tasks when there is a change
-    return gulp.watch('src/**/*.*', ['browserify'])
+    return gulp.watch('client/**/*.*', ['browserify'])
 });
