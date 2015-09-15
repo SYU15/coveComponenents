@@ -1,0 +1,10 @@
+{
+  "name": "reactTVComponenets",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "webpack -w & node server.js"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
