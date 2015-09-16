@@ -3,7 +3,6 @@ var TVStream = require('./TVStream.js');
 var TVData = require('../../data/data.js');
 var SidebarEntry = require('./sidebarEntry.js');
 
-
 var First = React.createClass({
       getInitialState: function() {
         return { stations: [
@@ -18,10 +17,18 @@ var First = React.createClass({
       componentDidMount: function() {
         //add stations from server here
         // $.get
+
         if(this.isMounted()) {
           var newStations = [];
+          var id = 0;
           for(var key in TVData) {
-            newStations.push({station: key, shows: [{id: Math.random(), show: Math.random()}, {id: Math.random(), show: "Show2"}]});
+              var newStation = {station: key, shows: []};
+              var listings = TVData[key].listings;
+            for(var i = 0; i < listings.length; i++) {
+              newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time});
+              id++;
+            }
+            newStations.push(newStation);
           }
           this.setState({
             stations: newStations
@@ -36,8 +43,8 @@ var First = React.createClass({
             return <TVStream data={station} key={station.station}></TVStream>
           });
           return (
-            <div>
-              <div className="ui top attached tabular menu">
+            <div className="eight wide column">
+              <div className="ui seven item stackable tabs menu">
                 {sidebarStations}
               </div>
                 {rows}

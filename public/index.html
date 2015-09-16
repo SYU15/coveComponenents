@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <div id="firstComponent"></div>
+    <div class="ui grid" id="firstComponent"></div>
     <script src="bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
+    <script>
+      $(document).ready(function() {
+        $('.menu .item').tab();
+      });
+    </script>
   </body>
 </html>

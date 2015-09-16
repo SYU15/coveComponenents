@@ -1,6 +1,5 @@
 var React = require('react');
 var TVList = require('./TVList.js');
-var data = require('../../data/data.js');
 
 var TVStream = React.createClass({
         render: function() {
