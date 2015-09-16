@@ -4,10 +4,10 @@ var data = require('../../data/data.js');
 
 var TVStream = React.createClass({
         render: function() {
-          var rows = this.props.data.map(function(show, i){
+          var rows = this.props.data.shows.map(function(show, i){
             return <TVList data={show} key={show.id}></TVList> 
-          })
-          return <div data={this.props.data} className="ui segments ten wide column">{rows}</div>          
+          });
+          return <div data={this.props.data} className={this.props.data.station === 'KQED' ? 'ui bottom attached active tab segments' : 'ui bottom attached tab segments'} data-tab={this.props.data.station}>{rows}</div>          
         }
       });
 

@@ -7,7 +7,7 @@ var TVSidebar = React.createClass({
           var rows = this.props.data.map(function(station, i){
             return <SidebarEntry data={station} key={station.station}></SidebarEntry> 
           });
-          return <div data={this.props.data} className="ui large celled list three wide column">{rows}</div>          
+          return <div data={this.props.data}>{rows}</div>          
         }
       });
 
