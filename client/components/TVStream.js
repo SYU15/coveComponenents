@@ -1,5 +1,6 @@
 var React = require('react');
 var TVList = require('./TVList.js');
+var data = require('../../data/data.js');
 
 var TVStream = React.createClass({
 
@@ -21,7 +22,7 @@ var TVStream = React.createClass({
           var rows = this.state.data.map(function(show, i){
             return <TVList data={show} key={show.id}></TVList> 
           })
-          return <div className="ui segments">{rows}</div>          
+          return <div className="ui segments ten wide column">{rows}</div>          
         }
       });
 
