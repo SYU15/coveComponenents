@@ -1,0 +1,19 @@
+{
+  "name": "reactTVComponenets",
+  "version": "0.0.1",
+  "authors": [
+    "Sarah Yu"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib"
+  ],
+  "dependencies": {
+    "semantic": "~2.1.4",
+    "ui": "~0.0.5",
+    "semantic-ui": "~2.1.4"
+  }
+}

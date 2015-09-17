@@ -1,0 +1,11 @@
+.schedule-tab {
+  height: 500px;
+  overflow: auto;
+}
+.full-width {
+  width: 100%;
+}
+.whitespace-fix {
+  white-space: normal;
+  padding: 2%;
+}

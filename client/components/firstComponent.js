@@ -15,7 +15,6 @@ var First = React.createClass({
       },
 
       componentDidMount: function() {
-        //add stations from server here
         // $.get
 
         if(this.isMounted()) {
@@ -25,7 +24,7 @@ var First = React.createClass({
               var newStation = {station: key, shows: []};
               var listings = TVData[key].listings;
             for(var i = 0; i < listings.length; i++) {
-              newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time});
+              newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time, description: listings[i].description});
               id++;
             }
             newStations.push(newStation);
