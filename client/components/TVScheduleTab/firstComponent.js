@@ -1,6 +1,6 @@
 var React = require('react');
 var TVStream = require('./TVStream.js');
-var TVData = require('../../data/data.js');
+var TVData = require('../../../data/data.js');
 var SidebarEntry = require('./sidebarEntry.js');
 
 var First = React.createClass({
@@ -42,11 +42,13 @@ var First = React.createClass({
             return <TVStream data={station} key={station.station}></TVStream>
           });
           return (
-            <div className="eight wide column">
-              <div className="ui seven item stackable tabs menu">
-                {sidebarStations}
+            <div className="ten wide column ui grid">
+              <div className="eight wide column">
+                <div className="ui seven item stackable tabs menu">
+                  {sidebarStations}
+                </div>
+                  {rows}
               </div>
-                {rows}
             </div>
             );
         }
