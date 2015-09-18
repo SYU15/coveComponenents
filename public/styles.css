@@ -9,3 +9,7 @@
   white-space: normal;
   padding: 2%;
 }
+
+.clickable {
+  cursor: pointer;
+}

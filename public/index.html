@@ -8,9 +8,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script>
-      $(document).ready(function() {
+    $(document).ready(function(){
+      console.log('called')
+      $('.menu').ready(function(){
+        console.log('registered')
         $('.menu .item').tab();
       });
+    });
     </script>
   </body>
 </html>

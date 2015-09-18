@@ -2,6 +2,8 @@ var React = require('react');
 var TVStream = require('./TVStream.js');
 var TVData = require('../../../data/data.js');
 var SidebarEntry = require('./sidebarEntry.js');
+// var $ = require('../../../bower_components/jquery/dist/jquery.min.js');
+// var tab = require('semantic-ui-tab');
 
 var First = React.createClass({
       getInitialState: function() {
@@ -16,7 +18,7 @@ var First = React.createClass({
 
       componentDidMount: function() {
         // $.get
-
+        // $('.menu .item').tab();
         if(this.isMounted()) {
           var newStations = [];
           var id = 0;
@@ -42,7 +44,7 @@ var First = React.createClass({
             return <TVStream data={station} key={station.station}></TVStream>
           });
           return (
-            <div className="ten wide column ui grid">
+            <div className="ui one column center aligned page grid">
               <div className="eight wide column">
                 <div className="ui seven item stackable tabs menu">
                   {sidebarStations}
