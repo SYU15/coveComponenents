@@ -14,7 +14,10 @@
   },
   "devDependencies": {
     "babel-jest": "^5.3.0",
-    "jest-cli": "^0.4.0"
+    "gulp-nodemon": "^2.0.4",
+    "jest-cli": "^0.4.0",
+    "livereactload": "^0.7.0",
+    "watchify": "^3.4.0"
   },
   "scripts": {
     "test": "jest"
@@ -26,16 +29,18 @@
     ]
   },
   "browserify": {
-      "transform": [ "browserify-shim" ]
-    },
-    "browser": {
-        "sui": "./bower_components/semantic/dist/semantic.js"
-      },
-      "browserify-shim": {
-        "sui": {
-          "depends": [
-            "jquery:jQuery"
-          ]
-      }
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "sui": "./bower_components/semantic/dist/semantic.js"
+  },
+  "browserify-shim": {
+    "sui": {
+      "depends": [
+        "jquery:jQuery"
+      ]
     }
+  }
 }
