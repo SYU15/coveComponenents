@@ -2,14 +2,18 @@ var React = require('react');
 var Router = require('react-router');
 
 var ComponentButton = React.createClass({
+  
   mixins: [Router.Navigation],
+
   propTypes: {
     buttonName: React.PropTypes.string.isRequired,
     routing: React.PropTypes.string.isRequired
   },
+
   clickHandler: function() {
     this.transitionTo(this.props.routing);
   },
+
   render: function() {
     return (
       <div className="ui one column center aligned page grid">
@@ -17,7 +21,7 @@ var ComponentButton = React.createClass({
           <h3>{this.props.buttonName}</h3>
         </div>
       </div> 
-      );
+    );
   }
 });
 

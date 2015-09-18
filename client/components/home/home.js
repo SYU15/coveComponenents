@@ -9,7 +9,7 @@ var Home = React.createClass({
         <div className="ui center aligned basic segment"><h2>Select Your Component</h2></div>
         <ComponentButton routing="TVTabs" buttonName="TV Schedule Tab" />
       </div>
-      );
+    );
   }
 });
 
