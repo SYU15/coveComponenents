@@ -1,6 +1,6 @@
 var React = require('react');
 var TVStream = require('./TVStream.js');
-var TVData = require('../../../data/data.js');
+// var TVData = require('../../../data/data.js');
 var SidebarEntry = require('./sidebarEntry.js');
 var $ = require('jquery');
 var sui = require('sui');
@@ -19,27 +19,31 @@ var First = React.createClass({
 
       componentDidMount: function() {
         //can use AJAX call instead of processing static data
-        // $.get
         $('.menu .item').tab();
-        if(this.isMounted()) {
-          var newStations = [];
-          var id = 0;
+        var TVData = {};
+        $.get(this.props.source, function(result) {
+          TVData = result.data;
+          // console.log(result.data);
+          if(this.isMounted()) {
+            var newStations = [];
+            var id = 0;
 
-          for(var key in TVData) {
-              var newStation = {station: key, shows: []};
-              var listings = TVData[key].listings;
+            for(var key in TVData) {
+                var newStation = {station: key, shows: []};
+                var listings = TVData[key].listings;
 
-            for(var i = 0; i < listings.length; i++) {
-              newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time, description: listings[i].description});
-              id++;
+              for(var i = 0; i < listings.length; i++) {
+                newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time, description: listings[i].description});
+                id++;
+              }
+              newStations.push(newStation);
             }
-            newStations.push(newStation);
-          }
 
-          this.setState({
-            stations: newStations
-          });
-        }
+            this.setState({
+              stations: newStations
+            });
+          }
+        }.bind(this));
       },
 
       componentDidUpdate: function() {

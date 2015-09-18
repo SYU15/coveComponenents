@@ -22,15 +22,15 @@ gulp.task('browserify', function() {
       .pipe(gulp.dest('public/'));
 });
 
-gulp.task('serverwatch', function() {
-  nodemon({script: 'server.js', ext: 'js', ignore: ['gulpfile.js', 'public/bundle.js', 'node_modules/*', 'bower_components/*', '__tests__']})
-  .on('change', [])
-  .on('restart', function() {
-    console.log('Server has restarted');
-  });
-});
+// gulp.task('serverwatch', function() {
+//   nodemon({script: 'server.js', ext: 'js', ignore: ['gulpfile.js', 'public/bundle.js', 'node_modules/*', 'bower_components/*', '__tests__']})
+//   .on('change', [])
+//   .on('restart', function() {
+//     console.log('Server has restarted');
+//   });
+// });
 
-gulp.task('default',['browserify', 'serverwatch'], function() {
+gulp.task('default',['browserify'], function() {
   //watch all files immediately, rerun gulp tasks when there is a change
-    return gulp.watch('client/**/*.*', ['browserify', 'serverwatch']);
+    return gulp.watch('client/**/*.*', ['browserify']);
 });
