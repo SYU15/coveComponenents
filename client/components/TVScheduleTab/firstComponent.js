@@ -2,9 +2,8 @@ var React = require('react');
 var TVStream = require('./TVStream.js');
 var TVData = require('../../../data/data.js');
 var SidebarEntry = require('./sidebarEntry.js');
-// var $ = require('../../../bower_components/jquery/dist/jquery.min.js');
-// var tab = require('semantic-ui-tab');
-
+var $ = require('jquery');
+var sui = require('sui');
 var First = React.createClass({
       getInitialState: function() {
         return { stations: [
@@ -18,7 +17,7 @@ var First = React.createClass({
 
       componentDidMount: function() {
         // $.get
-        // $('.menu .item').tab();
+        $('.menu .item').tab();
         if(this.isMounted()) {
           var newStations = [];
           var id = 0;
@@ -37,6 +36,9 @@ var First = React.createClass({
         }
       },
 
+      componentDidUpdate: function() {
+        $('.menu .item').tab();
+      },
       render: function() {
           var sidebarStations = [];
           var rows = this.state.stations.map(function(station, i){
