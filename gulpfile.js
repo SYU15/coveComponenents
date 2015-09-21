@@ -1,25 +1,51 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
-//converts JSX to javascript
-var reactify = require('reactify');
-//must convert a string to a stream to allow browerify to be compatible with gulp
+var gutil = require('gulp-util');
 var source = require('vinyl-source-stream');
-var nodemon = require('gulp-nodemon');
-var lreload = require('livereactload');
 var watchify = require('watchify');
+var browserSync = require('browser-sync').create();
+var babelify = require('babelify');
+
+//abstracts this section so it can be reused
+var bundle = function(bundler) {
+ //entrypoint into app
+   return bundler
+   //converts JSX to javascript
+     .transform(babelify)
+     .bundle()
+     .on('error', function(e){
+       gutil.log(e);
+     })
+     //bundle will be named bundle.js
+     .pipe(source('bundle.js'))
+     //bundle will be located at dist/js
+     .pipe(gulp.dest('public/'))
+     //lets browserSync know when there is a new version
+     .pipe(browserSync.stream());
+
+};
+
+gulp.task('watch', function(){
+  
+  var watcher = watchify(browserify('./client/App.js', watchify.args));
+
+  bundle(watcher);
+  //on update, run browserify again
+  watcher.on('update', function(){
+    bundle(watcher);
+  });
+
+  //logs information to the console
+  watcher.on('log', gutil.log);
+
+  browserSync.init({
+    server: "./public",
+    logFileChanges: false
+  });
+});
 
 gulp.task('browserify', function() {
-  // lreload.monitor('public/bundle.js', {displayNotification: true});
-
-  //entrypoint into app
-    browserify('./client/App.js')
-    //converts JSX to javascript
-      .transform('reactify')
-      .bundle()
-      //bundle will be named bundle.js
-      .pipe(source('bundle.js'))
-      //bundle will be located at dist/js
-      .pipe(gulp.dest('public/'));
+  return bundle(browserify('./client/App.js'))
 });
 
 gulp.task('TVTab', function() {
@@ -36,15 +62,4 @@ gulp.task('TVTab', function() {
       .pipe(gulp.dest('output/'));
 });
 
-// gulp.task('serverwatch', function() {
-//   nodemon({script: 'server.js', ext: 'js html', ignore: ['gulpfile.js', 'public/bundle.js', 'node_modules/*', 'bower_components/*', '__tests__']})
-//   .on('change', [])
-//   .on('restart', function() {
-//     console.log('server has restarted');
-//   });
-// });
-
-gulp.task('default',['browserify', 'serverwatch'], function() {
-  //watch all files immediately, rerun gulp tasks when there is a change
-    return gulp.watch('client/**/*.*', ['browserify', 'serverwatch']);
-});
+gulp.task('default',['watch']);
