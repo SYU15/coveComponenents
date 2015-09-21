@@ -21,3 +21,10 @@ An extendable library of React Components ingesting KQED's media-api-service
 - ``node/nodemon server.js``
   - In the process of bundling into gulp task but has bugs
 - Go to localhost:8000 in your browser
+
+## Export TV Schedule Tab
+### This is a temporary workaround and will be refactored soon
+- Create an output folder in the top level directory of the project
+- In the terminal run ``gulp TVTab``
+- The gulp task will create a tabs.js file in the output folder that you can use in projects
+  - This React component will render with a element that has an id of 'TVTab'

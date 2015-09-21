@@ -22,15 +22,29 @@ gulp.task('browserify', function() {
       .pipe(gulp.dest('public/'));
 });
 
+gulp.task('TVTab', function() {
+  // lreload.monitor('public/bundle.js', {displayNotification: true});
+
+  //entrypoint into app
+    browserify('./client/components/TVScheduleTab/render.js')
+    //converts JSX to javascript
+      .transform('reactify')
+      .bundle()
+      //bundle will be named bundle.js
+      .pipe(source('tabs.js'))
+      //bundle will be located at dist/js
+      .pipe(gulp.dest('output/'));
+});
+
 // gulp.task('serverwatch', function() {
-//   nodemon({script: 'server.js', ext: 'js', ignore: ['gulpfile.js', 'public/bundle.js', 'node_modules/*', 'bower_components/*', '__tests__']})
+//   nodemon({script: 'server.js', ext: 'js html', ignore: ['gulpfile.js', 'public/bundle.js', 'node_modules/*', 'bower_components/*', '__tests__']})
 //   .on('change', [])
 //   .on('restart', function() {
-//     console.log('Server has restarted');
+//     console.log('server has restarted');
 //   });
 // });
 
-gulp.task('default',['browserify'], function() {
+gulp.task('default',['browserify', 'serverwatch'], function() {
   //watch all files immediately, rerun gulp tasks when there is a change
-    return gulp.watch('client/**/*.*', ['browserify']);
+    return gulp.watch('client/**/*.*', ['browserify', 'serverwatch']);
 });
