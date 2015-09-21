@@ -17,7 +17,7 @@ var ComponentButton = React.createClass({
   render: function() {
     return (
       <div className="ui one column center aligned page grid">
-        <div className="ui center aligned violet inverted compact segment clickable" onClick={this.clickHandler}>
+        <div className="ui center aligned violet inverted compact segment react-clickable" onClick={this.clickHandler}>
           <h3>{this.props.buttonName}</h3>
         </div>
       </div> 

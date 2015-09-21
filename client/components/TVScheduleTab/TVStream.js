@@ -7,7 +7,7 @@ var TVStream = React.createClass({
           return <TVList data={show} key={show.id}></TVList> 
         });
         
-        return <div data={this.props.data} className={this.props.data.station === 'KQED' ? 'ui bottom attached active tab segments schedule-tab' : 'ui bottom attached tab segments schedule-tab'} data-tab={this.props.data.station}>{rows}</div>          
+        return <div data={this.props.data} className={this.props.data.station === 'KQED' ? 'ui bottom attached active tab segments react-schedule-tab' : 'ui bottom attached tab segments react-schedule-tab'} data-tab={this.props.data.station}>{rows}</div>          
       }
   });
 

@@ -12,7 +12,7 @@ var Main = React.createClass({
   render: function() {
     return (
       <div className = "sixteen wide column">
-        <div className="ui center aligned inverted purple segment"><h1 className="clickable" onClick={this.clickHandler}>KQED React Components</h1></div>
+        <div className="ui center aligned inverted purple segment"><h1 className="react-clickable" onClick={this.clickHandler}>KQED React Components</h1></div>
         <RouteHandler />
       </div>
     );

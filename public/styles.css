@@ -1,15 +1,15 @@
-.schedule-tab {
+.react-schedule-tab {
   height: 500px;
   overflow: auto;
 }
-.full-width {
+.react-full-width {
   width: 100%;
 }
-.whitespace-fix {
+.react-whitespace-fix {
   white-space: normal;
   padding: 2%;
 }
 
-.clickable {
+.react-clickable {
   cursor: pointer;
 }
