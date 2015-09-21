@@ -10,7 +10,7 @@ var babelify = require('babelify');
 var bundle = function(bundler) {
  //entrypoint into app
    return bundler
-   //converts JSX to javascript
+   //converts JSX to javascript, also ES6 functionality
      .transform(babelify)
      .bundle()
      .on('error', function(e){
@@ -49,7 +49,6 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('TVTab', function() {
-  // lreload.monitor('public/bundle.js', {displayNotification: true});
 
   //entrypoint into app
     browserify('./client/components/TVScheduleTab/render.js')
