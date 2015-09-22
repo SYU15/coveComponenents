@@ -7,7 +7,7 @@ var TVList = React.createClass({
             <div className = {this.props.data.id % 2 === 0 ? "visible content ui secondary segment react-full-width" : "visible content ui segment react-full-width"}>
               <div>
                 <div className="ui dividing header">{this.props.data.show}</div> 
-                Time: {this.props.data.time}
+                {this.props.data.time}
               </div>
             </div>
             <div className="hidden content react-whitespace-fix">

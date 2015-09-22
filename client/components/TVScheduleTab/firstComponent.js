@@ -23,7 +23,6 @@ var First = React.createClass({
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
-
         var TVData = {};
         $.get(this.props.source, function(result) {
           TVData = result.data;

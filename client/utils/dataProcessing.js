@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 var dataUtils = {
   dailyListings: function(data) {
     var newStations = [];
@@ -11,7 +13,10 @@ var dataUtils = {
         var listings = data[key].listings;
 
       for(var i = 0; i < listings.length; i++) {
-        newStation.shows.push({id: id, show: listings[i].title, time: listings[i].start_time, description: listings[i].description});
+        var formatTime = moment(listings[i].start_time, 'HHmm').format('h:mm A');
+        newStation.shows.push({id: id, show: listings[i].title, 
+                                time: formatTime, 
+                                description: listings[i].description});
         id++;
       }
       newStations.push(newStation);
