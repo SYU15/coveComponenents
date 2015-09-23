@@ -4,6 +4,7 @@ var sui = require('sui');
 
 var TVStream = require('./TVStream.js');
 var SidebarEntry = require('./sidebarEntry.js');
+var DatePicker = require('./datePicker.js');
 var utils = require('../../utils/dataProcessing.js');
 
 var First = React.createClass({
@@ -53,10 +54,11 @@ var First = React.createClass({
           return (
             <div className="ui one column center aligned page grid">
               <div className="fourteen wide column">
-                <div className="ui seven item pointing secondary tabs menu">
+                 <div className="ui pointing secondary tabs menu">
                   {sidebarStations}
+                  <DatePicker date={this.props.date}/>
                 </div>
-                  {rows}
+                {rows}
               </div>
             </div>
             );

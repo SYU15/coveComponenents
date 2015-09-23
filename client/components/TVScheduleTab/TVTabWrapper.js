@@ -3,9 +3,14 @@ var TVScheduleTab = require('./firstComponent.js');
 var moment = require('moment');
 
 var TVTabWrapper = React.createClass({
+  getDefaultProps: function() {
+    return {
+      source: 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/',
+      day: moment().format('YYYYMMDD')
+    };
+  },
   render: function() {
-      var today = moment().format("YYYYMMDD");
-      return <TVScheduleTab source="http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/" date={today} />
+      return <TVScheduleTab source={this.props.source} date={this.props.day} />
     }
 });
 
