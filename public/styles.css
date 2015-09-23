@@ -13,3 +13,7 @@
 .react-clickable {
   cursor: pointer;
 }
+
+.react-small-item {
+  font-size: 9px;
+}

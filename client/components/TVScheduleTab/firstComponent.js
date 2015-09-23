@@ -53,7 +53,7 @@ var First = React.createClass({
           return (
             <div className="ui one column center aligned page grid">
               <div className="fourteen wide column">
-                <div className="ui seven item stackable tabs menu">
+                <div className="ui seven item pointing secondary tabs menu">
                   {sidebarStations}
                 </div>
                   {rows}
