@@ -2,7 +2,6 @@ var React = require('react');
 var Router = require('react-router');
 
 var ComponentButton = React.createClass({
-  
   mixins: [Router.Navigation],
 
   propTypes: {
