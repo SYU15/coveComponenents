@@ -25,18 +25,26 @@ var First = React.createClass({
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
         var TVData = {};
-        $.get(this.props.source, function(result) {
-          TVData = result.data;
+        $.ajax({
+            url: this.props.source,
+            type: 'GET',
+            success: function(result){
+              result = JSON.parse(result);
+              TVData = result.data;
 
-          if(this.isMounted()) {
+              if(this.isMounted()) {
 
-            var newStations = utils.dailyListings(TVData);
+                var newStations = utils.dailyListings(TVData);
 
-            this.setState({
-              stations: newStations
-            });
-          }
-        }.bind(this));
+                this.setState({
+                  stations: newStations
+                });
+              }
+            }.bind(this),
+            error: function(result) {
+              console.log(result);
+            }
+        });
       },
 
       componentDidUpdate: function() {

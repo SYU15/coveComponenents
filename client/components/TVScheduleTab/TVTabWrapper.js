@@ -1,16 +1,23 @@
 var React = require('react');
 var TVScheduleTab = require('./firstComponent.js');
 var moment = require('moment');
+var tabStore = require('../../stores/tabStores.js');
 
 var TVTabWrapper = React.createClass({
-  getDefaultProps: function() {
-    return {
-      source: 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/',
-      day: moment().format('YYYYMMDD')
-    };
+  getInitialState: function() {
+    return tabStore.getApiParams();
+  },
+  componentDidMount: function() {
+    tabStore.addChangeListener(this.onChange);
+  },
+  componentWillUnmount: function() {
+    tabStore.removeChangeListener(this.onChange);
+  },
+  onChange: function() {
+    this.setState(tabStore.getApiParams());
   },
   render: function() {
-      return <TVScheduleTab source={this.props.source} date={this.props.day} />
+      return <TVScheduleTab source={this.state.apiCall} date={this.state.date} />
     }
 });
 
