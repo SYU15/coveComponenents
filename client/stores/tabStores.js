@@ -1,5 +1,7 @@
 var AppDispatcher = require('../dispatchers/appDispatcher.js');
 var AppConstants = require('../constants/appConstants.js');
+var timeUtils = require('../utils/timeProcessing.js');
+
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var moment = require('moment');
@@ -8,18 +10,24 @@ var moment = require('moment');
 var CHANGE_EVENT = 'change';
 
 var _apiCall = 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/';
+var _url = _apiCall;
 var _date = moment().format('YYYYMMDD');
+var _startDate = _date;
 
-var previousDay = function() {
-  _apiCall += testTab;
-  _date = testTab;
+var newDay = function(direction) {
+  var endTime;
+  
+  if(direction === 'previous') {
+    endTime = moment(_date, 'YYYYMMDD').subtract(1, 'days').format('YYYYMMDD');
+    } else if (direction === 'next') {
+      endTime = moment(_date, 'YYYYMMDD').add(1, 'days').format('YYYYMMDD');
+  }
+
+  var newTime = timeUtils.dateLimit(_startDate, endTime, _date);
+  
+  _apiCall = _url + newTime;
+  _date = newTime;
 };
-
-var nextDay = function() {
-};
-
-
-var testTab = 20150920;
 
 var tabStore = assign({}, EventEmitter.prototype, {
   getApiParams: function() {
@@ -45,12 +53,13 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
     case AppConstants.PREVIOUS_DAY:
-      previousDay();
+      newDay('previous');
       console.log('previous day registered');
       tabStore.emitChange();
       break;
     case AppConstants.NEXT_DAY:
       console.log('next day registered');
+      newDay('next');
       tabStore.emitChange();
       break;
     default:

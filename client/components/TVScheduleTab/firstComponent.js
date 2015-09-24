@@ -20,7 +20,6 @@ var First = React.createClass({
           ]
         };
       },
-
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
@@ -29,7 +28,10 @@ var First = React.createClass({
             url: this.props.source,
             type: 'GET',
             success: function(result){
-              result = JSON.parse(result);
+              if(typeof result === 'string') {
+                result = JSON.parse(result);
+              }
+
               TVData = result.data;
 
               if(this.isMounted()) {

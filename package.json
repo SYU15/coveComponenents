@@ -37,7 +37,7 @@
     ]
   },
   "browser": {
-    "sui": "./bower_components/semantic/dist/semantic.js"
+    "sui": "./bower_components/semantic/dist/semantic.min.js"
   },
   "browserify-shim": {
     "sui": {
