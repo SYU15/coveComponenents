@@ -21,6 +21,11 @@ var AppActions = {
     });
     this.getData(TabStores.getApiData().apiCall) ;       
   },
+  primetime: function() {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.PRIMETIME
+    });    
+  },
   getData: function(apiUrl) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.PENDING_CALL

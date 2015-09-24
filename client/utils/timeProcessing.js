@@ -1,5 +1,4 @@
 var moment = require('moment');
-
 var timeUtils = {
   dateLimit: function(startTime, endTime, currentTime) {
     var difference = moment(startTime, 'YYYYMMDD').diff(moment(endTime, 'YYYYMMDD'), 'days');

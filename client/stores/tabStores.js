@@ -67,6 +67,10 @@ AppDispatcher.register(function(payload) {
       newDay('next');
       tabStore.emitChange();
       break;
+   case AppConstants.PRIMETIME:
+     console.log('primetime registered');
+     tabStore.emitChange();
+     break; 
     case AppConstants.PENDING_CALL:
       console.log('pending call registered');
       tabStore.emitChange();

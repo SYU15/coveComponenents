@@ -5,6 +5,7 @@ var sui = require('sui');
 var TVStream = require('./TVStream.js');
 var SidebarEntry = require('./sidebarEntry.js');
 var DatePicker = require('./datePicker.js');
+var PrimeButton = require('./primetime.js');
 
 var First = React.createClass({
 
@@ -42,6 +43,7 @@ var First = React.createClass({
                  <div className="ui pointing secondary tabs menu">
                   {sidebarStations}
                   <DatePicker date={this.props.date}/>
+                  <PrimeButton />
                 </div>
                   {rows === undefined ? 'loading...' : rows}
                 <i className={rows === undefined ? 'huge notched circle loading icon' : ''}></i>

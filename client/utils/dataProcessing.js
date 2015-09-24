@@ -14,9 +14,12 @@ var dataUtils = {
 
       for(var i = 0; i < listings.length; i++) {
         var formatTime = moment(listings[i].start_time, 'HHmm').format('h:mm A');
+        var isPrime = moment(listings[i].start_time).isBetween('1929', '2201');
         newStation.shows.push({id: id, show: listings[i].title, 
                                 time: formatTime, 
-                                description: listings[i].description});
+                                description: listings[i].description,
+                                isPrime: isPrime
+                              });
         id++;
       }
       newStations.push(newStation);
