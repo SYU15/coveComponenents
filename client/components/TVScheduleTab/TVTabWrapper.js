@@ -5,7 +5,7 @@ var tabStore = require('../../stores/tabStores.js');
 
 var TVTabWrapper = React.createClass({
   getInitialState: function() {
-    return tabStore.getApiParams();
+    return tabStore.getApiData();
   },
   componentDidMount: function() {
     tabStore.addChangeListener(this.onChange);
@@ -14,10 +14,10 @@ var TVTabWrapper = React.createClass({
     tabStore.removeChangeListener(this.onChange);
   },
   onChange: function() {
-    this.setState(tabStore.getApiParams());
+    this.setState(tabStore.getApiData());
   },
   render: function() {
-      return <TVScheduleTab source={this.state.apiCall} date={this.state.date} />
+      return <TVScheduleTab apiData={this.state.apiData} date={this.state.date} />
     }
 });
 

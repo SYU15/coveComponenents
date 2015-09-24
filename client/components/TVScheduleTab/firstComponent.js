@@ -5,7 +5,6 @@ var sui = require('sui');
 var TVStream = require('./TVStream.js');
 var SidebarEntry = require('./sidebarEntry.js');
 var DatePicker = require('./datePicker.js');
-var utils = require('../../utils/dataProcessing.js');
 
 var First = React.createClass({
 
@@ -23,30 +22,12 @@ var First = React.createClass({
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
-        var TVData = {};
-        $.ajax({
-            url: this.props.source,
-            type: 'GET',
-            success: function(result){
-              if(typeof result === 'string') {
-                result = JSON.parse(result);
-              }
-
-              TVData = result.data;
-
-              if(this.isMounted()) {
-
-                var newStations = utils.dailyListings(TVData);
-
-                this.setState({
-                  stations: newStations
-                });
-              }
-            }.bind(this),
-            error: function(result) {
-              console.log(result);
-            }
-        });
+        if(this.isMounted()) {
+          console.log(this.props.apiData);
+          this.setState({
+            stations: this.props.apiData
+          });
+        }        
       },
 
       componentDidUpdate: function() {

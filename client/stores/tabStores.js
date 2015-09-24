@@ -1,7 +1,9 @@
 var AppDispatcher = require('../dispatchers/appDispatcher.js');
 var AppConstants = require('../constants/appConstants.js');
 var timeUtils = require('../utils/timeProcessing.js');
+var dateUtils = require('../utils/dataProcessing.js');
 
+var $ = require('jquery');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var moment = require('moment');
@@ -29,11 +31,27 @@ var newDay = function(direction) {
   _date = newTime;
 };
 
+var getData = function() {
+  $.ajax({
+      url: _apiCall,
+      type: 'GET',
+      success: function(result){
+        if(typeof result === 'string') {
+          result = JSON.parse(result);
+        }
+        return dateUtils.dailyListings(result.data);
+      },
+      error: function(result) {
+        return result;
+      }
+  });
+};
 var tabStore = assign({}, EventEmitter.prototype, {
-  getApiParams: function() {
+  getApiData: function() {
       return {
         apiCall: _apiCall,
-        date: _date
+        date: _date,
+        apiData: getData()
       };
     },
   emitChange: function() {
