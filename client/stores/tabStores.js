@@ -1,13 +1,10 @@
 var AppDispatcher = require('../dispatchers/appDispatcher.js');
 var AppConstants = require('../constants/appConstants.js');
 var timeUtils = require('../utils/timeProcessing.js');
-var dateUtils = require('../utils/dataProcessing.js');
 
-var $ = require('jquery');
 var assign = require('react/lib/Object.assign');
 var EventEmitter = require('events').EventEmitter;
 var moment = require('moment');
-
 
 var CHANGE_EVENT = 'change';
 
@@ -15,6 +12,7 @@ var _apiCall = 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings
 var _url = _apiCall;
 var _date = moment().format('YYYYMMDD');
 var _startDate = _date;
+var data;
 
 var newDay = function(direction) {
   var endTime;
@@ -31,27 +29,16 @@ var newDay = function(direction) {
   _date = newTime;
 };
 
-var getData = function() {
-  $.ajax({
-      url: _apiCall,
-      type: 'GET',
-      success: function(result){
-        if(typeof result === 'string') {
-          result = JSON.parse(result);
-        }
-        return dateUtils.dailyListings(result.data);
-      },
-      error: function(result) {
-        return result;
-      }
-  });
+var setApiData = function(newData) {
+  data = newData;
 };
+
 var tabStore = assign({}, EventEmitter.prototype, {
   getApiData: function() {
       return {
-        apiCall: _apiCall,
-        date: _date,
-        apiData: getData()
+       apiCall: _apiCall,
+       date: _date,
+       apiData: data
       };
     },
   emitChange: function() {
@@ -80,6 +67,19 @@ AppDispatcher.register(function(payload) {
       newDay('next');
       tabStore.emitChange();
       break;
+    case AppConstants.PENDING_CALL:
+      console.log('pending call registered');
+      tabStore.emitChange();
+      break;
+    case AppConstants.LOADED:
+      console.log('loaded registered');
+      setApiData(action.data);
+      tabStore.emitChange();
+      break;
+    case AppConstants.ERROR:
+      console.log('error registered');
+      setApiData(action.data);
+      tabStore.emitChange();
     default:
       console.log('no registered action');
   }

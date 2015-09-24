@@ -8,8 +8,8 @@ var DatePicker = require('./datePicker.js');
 
 var First = React.createClass({
 
-      getInitialState: function() {
-        return { stations: [
+      getDefaultProps: function() {
+        return { apiData: [
             {station: "KQED", shows: [{id: 1, show: "Show1"}, {id: 2, show: "Show2"}]},
             {station: "KQEDK", shows: [{id: 2, show: "Show2"}]},
             {station: "KQEDL", shows: [{id: 3, show: "Show3"}]},
@@ -22,12 +22,11 @@ var First = React.createClass({
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
-        if(this.isMounted()) {
-          console.log(this.props.apiData);
-          this.setState({
-            stations: this.props.apiData
-          });
-        }        
+        // if(this.isMounted()) {
+        //   this.setState({
+        //     stations: this.props.apiData
+        //   });
+        // }        
       },
 
       componentDidUpdate: function() {
@@ -35,9 +34,10 @@ var First = React.createClass({
       },
 
       render: function() {
+
           var sidebarStations = [];
           
-          var rows = this.state.stations.map(function(station, i){
+          var rows = this.props.apiData.map(function(station, i){
             sidebarStations.push(<SidebarEntry data={station.station} key={station.station}></SidebarEntry>);
             return <TVStream data={station} key={station.station}></TVStream>
           });

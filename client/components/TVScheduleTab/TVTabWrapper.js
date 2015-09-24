@@ -2,6 +2,7 @@ var React = require('react');
 var TVScheduleTab = require('./firstComponent.js');
 var moment = require('moment');
 var tabStore = require('../../stores/tabStores.js');
+var actions = require('../../actions/appActions.js');
 
 var TVTabWrapper = React.createClass({
   getInitialState: function() {
@@ -9,6 +10,7 @@ var TVTabWrapper = React.createClass({
   },
   componentDidMount: function() {
     tabStore.addChangeListener(this.onChange);
+    actions.getData(this.state.apiCall);
   },
   componentWillUnmount: function() {
     tabStore.removeChangeListener(this.onChange);
