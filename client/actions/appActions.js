@@ -22,7 +22,6 @@ var AppActions = {
     this.getData(TabStores.getApiData().apiCall) ;       
   },
   getData: function(apiUrl) {
-    console.log('getData called')
     AppDispatcher.handleViewAction({
       actionType: AppConstants.PENDING_CALL
     });
@@ -44,7 +43,7 @@ var AppActions = {
         error: function(result) {
           AppDispatcher.handleViewAction({
             actionType: AppConstants.ERROR,
-            data: data
+            data: result
           });
         }
     });

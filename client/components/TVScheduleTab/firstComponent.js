@@ -22,11 +22,6 @@ var First = React.createClass({
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
-        // if(this.isMounted()) {
-        //   this.setState({
-        //     stations: this.props.apiData
-        //   });
-        // }        
       },
 
       componentDidUpdate: function() {
@@ -36,7 +31,6 @@ var First = React.createClass({
       render: function() {
 
           var sidebarStations = [];
-          
           var rows = this.props.apiData.map(function(station, i){
             sidebarStations.push(<SidebarEntry data={station.station} key={station.station}></SidebarEntry>);
             return <TVStream data={station} key={station.station}></TVStream>
@@ -49,7 +43,8 @@ var First = React.createClass({
                   {sidebarStations}
                   <DatePicker date={this.props.date}/>
                 </div>
-                {rows}
+                  {rows === undefined ? 'loading...' : rows}
+                <i className={rows === undefined ? 'huge notched circle loading icon' : ''}></i>
               </div>
             </div>
             );

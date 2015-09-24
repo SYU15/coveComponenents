@@ -80,6 +80,7 @@ AppDispatcher.register(function(payload) {
       console.log('error registered');
       setApiData(action.data);
       tabStore.emitChange();
+      break;
     default:
       console.log('no registered action');
   }
