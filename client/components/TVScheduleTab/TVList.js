@@ -3,18 +3,27 @@ var $ = require('jquery');
 
 
 var TVList = React.createClass({
-      // componentDidUpdate: function() {
-      //   var firstLoad = true;
-      //   var anchors = $('.react-anchor');
-      //   if(firstLoad && anchors.length > 0) {
-      //     console.log('called');
-      //     $(window).scrollTop(anchors.offset().top).scrollLeft(anchors.offset().left);
-      //     firstLoad = false;
-      //   }
-      // },
+      getInitialState: function() {
+       return {
+        firstLoad: true
+       };
+      },
+      componentDidUpdate: function() {
+        // var anchor = $('#react-anchor');
+        // if(anchor.length > 0 && this.state.firstLoad) {
+        //   if(anchor.offset().top > 0) {
+        //     $('.react-schedule-tab').scrollTop(Math.round(anchor.offset().top));
+        //     this.setState({firstLoad: false});
+        //   }
+        // }
+        console.log(React.findDOMNode(this.refs.reactAnchor));
+        if(React.findDOMNode(this.refs.reactAnchor)) {
+          console.log('true');
+        }
+      },
       render: function() {
         return (
-          <div className = {this.props.data.shouldAnchor === true ? "react-anchor" : ''}>
+          <div ref = {this.props.data.shouldAnchor === true ? "reactAnchor" : ""}>
             <div className = {this.props.data.isPrime === true ? "ui move left reveal" : "ui move left reveal react-should-hide"}>
               <div className = {this.props.data.id % 2 === 0 ? "visible content ui secondary segment react-full-width" : "visible content ui segment react-full-width"}>
                 <div>

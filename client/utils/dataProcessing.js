@@ -1,12 +1,12 @@
 var moment = require('moment');
 require('moment-range');
 
-var currentShow = function(startTime, endTime, currentTime) {
+var currentShow = function(startTime, endTime, currentTime, station) {
   //isBetween is exclusive, so need to add/subtract 1 minute to endpoints
   endTime++;
   var start = moment(startTime, 'HHmm').subtract(1, 'minutes').format('HHmm');
   var end = moment(startTime, 'HHmm').add(endTime, 'minutes').format('HHmm');
-  if(moment(currentTime).isBetween(start, end)) {
+  if(moment(currentTime).isBetween(start, end) && station === 'KQED') {
     return true;
   } else {
     return false;
@@ -14,10 +14,9 @@ var currentShow = function(startTime, endTime, currentTime) {
 };
 
 var primeRange = function(startTime, endTime) {
-  endTime--;
   var end = moment(startTime, 'HHmm').add(endTime, 'minutes').format('HHmm');
   var tvDuration = moment.range(startTime, end);
-  var primeDuration = moment.range('1929', '2201');
+  var primeDuration = moment.range('1930', '2201');
   if(tvDuration.overlaps(primeDuration)) {
     return true;
   } else {
@@ -41,7 +40,7 @@ var dataUtils = {
       for(var i = 0; i < listings.length; i++) {
         var formatTime = moment(listings[i].start_time, 'HHmm').format('h:mm A');
         var isPrime = primeRange(listings[i].start_time, listings[i].minutes);
-        var shouldAnchor = currentShow(listings[i].start_time, listings[i].minutes, current);
+        var shouldAnchor = currentShow(listings[i].start_time, listings[i].minutes, current, key);
         newStation.shows.push({id: id, show: listings[i].title, 
                                 time: formatTime, 
                                 description: listings[i].description,

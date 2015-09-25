@@ -12,7 +12,6 @@ var AppActions = {
       actionType: AppConstants.NEXT_DAY
     });
     var getApi = TabStores.getApiData().apiCall;
-    console.log(TabStores.getApiData().apiCall);
     this.getData(TabStores.getApiData().apiCall) ; 
   },
   previousDay: function() {
