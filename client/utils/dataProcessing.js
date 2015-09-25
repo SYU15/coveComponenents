@@ -7,7 +7,6 @@ var currentShow = function(startTime, endTime, currentTime) {
   var start = moment(startTime, 'HHmm').subtract(1, 'minutes').format('HHmm');
   var end = moment(startTime, 'HHmm').add(endTime, 'minutes').format('HHmm');
   if(moment(currentTime).isBetween(start, end)) {
-    console.log('true');
     return true;
   } else {
     return false;
@@ -20,9 +19,6 @@ var primeRange = function(startTime, endTime) {
   var tvDuration = moment.range(startTime, end);
   var primeDuration = moment.range('1929', '2201');
   if(tvDuration.overlaps(primeDuration)) {
-    console.log(startTime);
-    console.log(end);
-    console.log('true');
     return true;
   } else {
     return false;
