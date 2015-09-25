@@ -37,10 +37,10 @@
     ]
   },
   "browser": {
-    "sui": "./bower_components/semantic/dist/semantic.min.js"
+    "tab": "./bower_components/semantic/dist/components/tab.min.js"
   },
   "browserify-shim": {
-    "sui": {
+    "tab": {
       "depends": [
         "jquery:jQuery"
       ]

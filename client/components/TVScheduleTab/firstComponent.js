@@ -1,6 +1,6 @@
 var React = require('react');
 var $ = require('jquery');
-var sui = require('sui');
+var tab = require('tab');
 
 var TVStream = require('./TVStream.js');
 var SidebarEntry = require('./sidebarEntry.js');
@@ -20,6 +20,7 @@ var First = React.createClass({
           ]
         };
       },
+
       componentDidMount: function() {
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
