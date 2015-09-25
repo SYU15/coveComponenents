@@ -42,6 +42,7 @@ AppDispatcher.register(function(payload) {
     default:
       console.log('no registered action');
     }
+    return true;
   });
 
 module.exports = primeStore;

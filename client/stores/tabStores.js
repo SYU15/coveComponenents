@@ -19,8 +19,8 @@ var newDay = function(direction) {
   
   if(direction === 'previous') {
     endTime = moment(_date, 'YYYYMMDD').subtract(1, 'days').format('YYYYMMDD');
-    } else if (direction === 'next') {
-      endTime = moment(_date, 'YYYYMMDD').add(1, 'days').format('YYYYMMDD');
+  } else if(direction === 'next') {
+    endTime = moment(_date, 'YYYYMMDD').add(1, 'days').format('YYYYMMDD');
   }
 
   var newTime = timeUtils.dateLimit(_startDate, endTime, _date);
@@ -79,6 +79,7 @@ AppDispatcher.register(function(payload) {
     default:
       console.log('no registered action');
   }
+  return true;
 });
 
 module.exports = tabStore;
