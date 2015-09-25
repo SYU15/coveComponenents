@@ -13,7 +13,6 @@ var _url = _apiCall;
 var _date = moment().format('YYYYMMDD');
 var _startDate = _date;
 var data;
-var hide = true;
 
 var newDay = function(direction) {
   var endTime;
@@ -34,10 +33,6 @@ var setApiData = function(newData) {
   data = newData;
 };
 
-var toggleShow = function() {
-  hide = !hide;
-};
-
 var tabStore = assign({}, EventEmitter.prototype, {
   getApiData: function() {
       return {
@@ -46,11 +41,6 @@ var tabStore = assign({}, EventEmitter.prototype, {
        apiData: data
       };
     },
-  getToggle: function() {
-    return {
-     shouldShow: hide 
-    };
-  },
   emitChange: function() {
      this.emit(CHANGE_EVENT);
    },
@@ -75,10 +65,6 @@ AppDispatcher.register(function(payload) {
       newDay('next');
       tabStore.emitChange();
       break;
-   case AppConstants.PRIMETIME:
-     toggleShow();
-     tabStore.emitChange();
-     break; 
     case AppConstants.PENDING_CALL:
       tabStore.emitChange();
       break;

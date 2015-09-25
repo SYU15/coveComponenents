@@ -1,22 +1,22 @@
 var React = require('react');
 var actions = require('../../actions/appActions.js');
-var tabStore = require('../../stores/tabStores.js');
+var primeStore = require('../../stores/primeStores.js');
 var actions = require('../../actions/appActions.js');
 var $ = require('jquery');
 
 var PrimeButton = React.createClass({
   getInitialState: function() {
-    return tabStore.getToggle();
+    return primeStore.getToggle();
   },
   componentDidMount: function() {
-    tabStore.addChangeListener(this.onChange);
+    primeStore.addChangeListener(this.onChange);
     actions.primetime();
   },
   componentWillUnmount: function() {
-    tabStore.removeListener(this.onChange);
+    primeStore.removeListener(this.onChange);
   },
   onChange: function() {
-    this.setState(tabStore.getToggle());
+    this.setState(primeStore.getToggle());
     this.showHide(this.state.shouldShow);
   },
   showHide: function(state) {
