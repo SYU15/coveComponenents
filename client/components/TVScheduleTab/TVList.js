@@ -10,18 +10,22 @@ var TVList = React.createClass({
       componentDidUpdate: function() {
         var anchor = document.getElementById('anchor') || null;
         var tabs = $('.react-schedule-tab');
-        console.log(tabs);
         if(this.state.firstLoad && anchor) {
           tabs.scrollTop(anchor.offsetTop);
           this.setState({firstLoad: false});
         }
       },
       render: function() {
+        //inline style to calculate height of entry based on number of minutes
+        var divStyle = {
+          height: (100 * Math.round(this.props.data.minutes/30)).toString()
+        };
+
         return (
           <div id={this.props.data.shouldAnchor ? "anchor" : ""}> 
             <div className={!this.props.data.isPrime && !this.props.shouldShow ? "react-should-hide" : ""}>
                 <div className ="ui move left reveal">
-                  <div className = {this.props.data.id % 2 === 0 ? "visible content ui secondary segment react-full-width" : "visible content ui segment react-full-width"}>
+                  <div style={divStyle} className = {this.props.data.id % 2 === 0 ? "visible content ui secondary segment react-full-width" : "visible content ui segment react-full-width"}>
                     <div>
                       <div className="ui dividing header">{this.props.data.show}</div> 
                       {this.props.data.time}

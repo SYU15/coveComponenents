@@ -45,7 +45,8 @@ var dataUtils = {
                                 time: formatTime, 
                                 description: listings[i].description,
                                 isPrime: isPrime,
-                                shouldAnchor: shouldAnchor
+                                shouldAnchor: shouldAnchor,
+                                minutes: listings[i].minutes
                               });
         id++;
       }
