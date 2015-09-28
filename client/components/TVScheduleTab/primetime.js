@@ -2,7 +2,6 @@ var React = require('react');
 var actions = require('../../actions/appActions.js');
 var primeStore = require('../../stores/primeStores.js');
 var actions = require('../../actions/appActions.js');
-// var $ = require('jquery');
 
 var PrimeButton = React.createClass({
   getInitialState: function() {
@@ -10,7 +9,6 @@ var PrimeButton = React.createClass({
   },
   componentDidMount: function() {
     primeStore.addChangeListener(this.onChange);
-    // actions.primetime();
   },
   componentWillUnmount: function() {
     primeStore.removeListener(this.onChange);
@@ -22,8 +20,6 @@ var PrimeButton = React.createClass({
     actions.primetime();
   },
   render: function() {
-    console.log('prime');
-    console.log(this.state.shouldShow);
   return (
     <a onClick={this.clickHandler} className="ui large basic label">
       {this.state.shouldShow === true ? 'Evening' : 'Full Schedule'}
