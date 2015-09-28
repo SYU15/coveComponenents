@@ -15,6 +15,13 @@ var TVList = React.createClass({
           this.setState({firstLoad: false});
         }
       },
+      shortenDescription: function(description) {
+        if(description.length > 400) {
+          return description.slice(0, 400) + "...";
+        } else {
+          return description;
+        }
+      },
       render: function() {
         //inline style to calculate height of entry based on number of minutes
         var divStyle = {
@@ -32,7 +39,7 @@ var TVList = React.createClass({
                     </div>
                   </div>
                   <div className="hidden content react-whitespace-fix">
-                    <p>{this.props.data.description ? this.props.data.description : "No Description Available."}</p>
+                    <p>{this.props.data.description ? this.shortenDescription(this.props.data.description) : "No Description Available."}</p>
                   </div>
                 </div>
             </div>
