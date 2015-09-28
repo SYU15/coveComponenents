@@ -7,7 +7,7 @@ var TVList = React.createClass({
         firstLoad: true
        };
       },
-      componentDidUpdate: function() {
+      componentDidMount: function() {
         var anchor = document.getElementById('anchor') || null;
         var tabs = $('.react-schedule-tab');
         if(this.state.firstLoad && anchor) {
@@ -16,7 +16,8 @@ var TVList = React.createClass({
         }
       },
       shortenDescription: function(description) {
-        if(description.length > 400) {
+        //shorten description for blocks less than 30 minutes long
+        if(description.length > 400 && this.props.data.minutes <= 30) {
           return description.slice(0, 400) + "...";
         } else {
           return description;

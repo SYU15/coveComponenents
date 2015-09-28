@@ -51,6 +51,12 @@ var AppActions = {
           });
         }
     });
+  },
+  scroll: function(scrollPosition) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.SCROLL,
+      scrollPosition: scrollPosition
+    });   
   }
 };
 module.exports = AppActions;
