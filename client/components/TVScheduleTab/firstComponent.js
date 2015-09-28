@@ -6,9 +6,13 @@ var TVStream = require('./TVStream.js');
 var SidebarEntry = require('./sidebarEntry.js');
 var DatePicker = require('./datePicker.js');
 var PrimeButton = require('./primetime.js');
+var primeStore = require('../../stores/primeStores.js');
 
 var First = React.createClass({
 
+      getInitialState: function() {
+        return primeStore.getToggle();
+      },
       getDefaultProps: function() {
         return { apiData: [
             {station: "KQED", shows: [{id: 1, show: "Show1"}, {id: 2, show: "Show2"}]},
@@ -20,8 +24,14 @@ var First = React.createClass({
           ]
         };
       },
-
+      componentWillUnmount: function() {
+        primeStore.removeListener(this.onChange);
+      },
+      onChange: function() {
+        this.setState(primeStore.getToggle());
+      },
       componentDidMount: function() {
+        primeStore.addChangeListener(this.onChange);
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
       },
@@ -31,11 +41,14 @@ var First = React.createClass({
       },
 
       render: function() {
-
+        console.log('TV');
+        console.log(this.state.shouldShow);
+          var shouldShow = this.state.shouldShow;
           var sidebarStations = [];
+
           var rows = this.props.apiData.map(function(station, i){
             sidebarStations.push(<SidebarEntry data={station.station} key={station.station}></SidebarEntry>);
-            return <TVStream data={station} key={station.station}></TVStream>
+            return <TVStream shouldShow={shouldShow} data={station} key={station.station}></TVStream>
           });
 
           return (

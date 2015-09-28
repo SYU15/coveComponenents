@@ -17,3 +17,6 @@
 .react-small-item {
   font-size: 10px;
 }
+.react-should-hide {
+  display: none;
+}
