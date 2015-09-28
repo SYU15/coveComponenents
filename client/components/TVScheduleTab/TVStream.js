@@ -4,7 +4,6 @@ var TVList = require('./TVList.js');
 var TVStream = React.createClass({
       render: function() {
         var shouldShow = this.props.shouldShow;
-        console.log(shouldShow);
         var rows = this.props.data.shows.map(function(show, i){
           return <TVList shouldShow={shouldShow} data={show} key={show.id}></TVList> 
         });

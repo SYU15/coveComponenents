@@ -41,8 +41,6 @@ var First = React.createClass({
       },
 
       render: function() {
-        console.log('TV');
-        console.log(this.state.shouldShow);
           var shouldShow = this.state.shouldShow;
           var sidebarStations = [];
 
