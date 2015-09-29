@@ -27,6 +27,7 @@ An extendable library of React Components ingesting KQED's media-api-service
   - For example, to export the TV tabs, you should run ``gulp exportComponent --component TVScheduleTab``
 - The gulp task will create a file in the output folder that you can use in projects
   - The console will log out where the id name of the element that the component will render to, or you can check the file.
+
 ## Testing
 - To run testing suite:
   - ``npm test``
