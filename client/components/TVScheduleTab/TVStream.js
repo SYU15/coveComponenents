@@ -1,7 +1,21 @@
 var React = require('react');
 var TVList = require('./TVList.js');
+var $ = require('jquery');
 
 var TVStream = React.createClass({
+      getInitialState: function() {
+       return {
+        firstLoad: true
+       };
+      },
+      componentDidMount: function() {
+        var anchor = document.getElementById('anchor') || null;
+        var tabs = $('.react-schedule-tab');
+        if(this.state.firstLoad && anchor) {
+          tabs.scrollTop(anchor.offsetTop);
+          this.setState({firstLoad: false});
+        }
+      },
       render: function() {
         var shouldShow = this.props.shouldShow;
         var rows = this.props.data.shows.map(function(show, i){

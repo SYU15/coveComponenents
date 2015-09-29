@@ -1,20 +1,6 @@
 var React = require('react');
-var $ = require('jquery');
 
 var TVList = React.createClass({
-      getInitialState: function() {
-       return {
-        firstLoad: true
-       };
-      },
-      componentDidMount: function() {
-        var anchor = document.getElementById('anchor') || null;
-        var tabs = $('.react-schedule-tab');
-        if(this.state.firstLoad && anchor) {
-          tabs.scrollTop(anchor.offsetTop);
-          this.setState({firstLoad: false});
-        }
-      },
       shortenDescription: function(description) {
         //shorten description for blocks less than 30 minutes long
         if(description.length > 400 && this.props.data.minutes <= 30) {
@@ -28,7 +14,6 @@ var TVList = React.createClass({
         var divStyle = {
           height: (100 * Math.round(this.props.data.minutes/30)).toString()
         };
-
         return (
           <div id={this.props.data.shouldAnchor ? "anchor" : ""}> 
             <div className={!this.props.data.isPrime && !this.props.shouldShow ? "react-should-hide" : ""}>

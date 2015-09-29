@@ -9,11 +9,10 @@ var scrollPosition = 0;
 var scrollStore = assign({}, EventEmitter.prototype, {
   getScroll: function() {
     return {
-     scrollPosition: scrollPosition 
+     scrollPosition: scrollPosition,
     };
   },
   setScroll: function(currentScroll) {
-    console.log(currentScroll);
     scrollPosition = currentScroll;
   },
   emitChange: function() {
