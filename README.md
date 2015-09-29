@@ -29,6 +29,6 @@ An extendable library of React Components ingesting KQED's media-api-service
   - The console will log out where the id name of the element that the component will render to, or you can check the file.
 
 ## Testing
-- To run testing suite:
+- To run testing suite in the terminal:
   - ``npm test``
   - Tests can be found in the unitTests folder
