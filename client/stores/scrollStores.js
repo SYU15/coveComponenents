@@ -33,7 +33,6 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
     case AppConstants.SCROLL:
-      console.log('registered');
       scrollStore.setScroll(action.scrollPosition);
       scrollStore.emitChange();
       break;

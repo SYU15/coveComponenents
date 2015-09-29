@@ -1,7 +1,6 @@
 var React = require('react');
 var actions = require('../../actions/appActions.js');
 var primeStore = require('../../stores/primeStores.js');
-var actions = require('../../actions/appActions.js');
 
 var PrimeButton = React.createClass({
   getInitialState: function() {
