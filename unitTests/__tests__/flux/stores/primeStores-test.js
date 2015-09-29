@@ -22,9 +22,11 @@ describe('primeStore', function(){
         actionType: AppConstants.PRIMETIME
     });
   });
+  
   it('registers a callback with the dispatcher', function() {
       expect(AppDispatcher.register.mock.calls.length).toBe(1);
     });
+  
   it('returns whether primetime should toggle on or not', function(){
     expect(PrimeStore.getToggle()).toEqual({shouldShow: true});
   });
