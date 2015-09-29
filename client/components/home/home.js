@@ -7,7 +7,8 @@ var Home = React.createClass({
     return (
       <div>
         <div className="ui center aligned basic segment"><h2>Select Your Component</h2></div>
-        <ComponentButton routing="TVTabs" buttonName="TV Schedule Tab" />
+        <ComponentButton routing="TVTabs" buttonName="Daily Schedule" />
+        <ComponentButton routing="WeeklySchedule" buttonName="Weekly Schedule" />
       </div>
     );
   }

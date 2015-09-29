@@ -20,3 +20,6 @@
 .react-should-hide {
   display: none;
 }
+.react-padded {
+  margin: 2% !important;
+}
