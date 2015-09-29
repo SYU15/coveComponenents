@@ -1,4 +1,4 @@
-jest.dontMock('../../../../client/stores/primeStores');
+jest.dontMock('../../../../client/stores/tabStores');
 jest.dontMock('../../../../client/constants/appConstants');
 jest.dontMock('../../../../client/dispatchers/appDispatcher');
 jest.dontMock('react/lib/Object.assign');
@@ -10,7 +10,7 @@ describe('tabStore', function(){
   var AppConstants = require('../../../../client/constants/appConstants');
   var timeUtils = require('../../../../client/utils/timeProcessing.js');
   var AppDispatcher;
-  var PrimeStore;
+  var TabStore;
   var EventEmitter;
   var callback;
   var actionPrevious;
@@ -18,10 +18,11 @@ describe('tabStore', function(){
   var actionPending;
   var actionLoaded;
   var actionError;
+  var moment = require('moment');
 
   beforeEach(function(){
     AppDispatcher = require('../../../../client/dispatchers/appDispatcher');
-    PrimeStore = require('../../../../client/stores/primeStores');
+    TabStore = require('../../../../client/stores/tabStores');
     EventEmitter = require('events').EventEmitter;
     callback = AppDispatcher.register.mock.calls[0][0];
     
@@ -45,7 +46,16 @@ describe('tabStore', function(){
     });
 
   });
+  
   it('registers a callback with the dispatcher', function() {
       expect(AppDispatcher.register.mock.calls.length).toBe(1);
     });
+
+  it('returns API information', function() {
+    var today = moment().format('YYYYMMDD');
+    expect(TabStore.getApiData().apiCall).toEqual('http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/');
+    expect(TabStore.getApiData().date).toEqual(today);
+    expect(TabStore.getApiData().data).toEqual(undefined);    
+    });
+
 });
