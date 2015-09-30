@@ -1,6 +1,7 @@
 var React = require('react');
 var Dropdown = require('./dropdown.js');
 var DateHeaders = require('./dateHeaders.js');
+var TimeColumn = require('./timeColumn.js');
 
 var WeeklyTable = React.createClass({ 
     
@@ -12,11 +13,11 @@ var WeeklyTable = React.createClass({
             <DateHeaders />
           </thead>
           <tbody>
+          <TimeColumn />
           </tbody>
         </table>
         );
     }
-
 });
 
 module.exports = WeeklyTable;

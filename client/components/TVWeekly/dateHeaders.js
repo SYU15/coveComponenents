@@ -11,7 +11,7 @@ var DateHeaders = React.createClass({
   },
   render: function() {
     var rows = this.props.week.map(function(day, i){
-      return <SingleHeader data={day} />
+      return <SingleHeader data={day} key={day.day}/>
     });
 
     return <div>{rows}</div>
