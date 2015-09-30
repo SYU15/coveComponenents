@@ -15,12 +15,12 @@ var TVList = React.createClass({
           height: (100 * Math.round(this.props.data.minutes/30)).toString()
         };
         return (
-          <div id={this.props.data.shouldAnchor ? "anchor" : ""}> 
+          <div id={this.props.data.shouldAnchor ? "anchor" : ""}>
             <div className={!this.props.data.isPrime && !this.props.shouldShow ? "react-should-hide" : ""}>
-                <div className ="ui move left reveal">
+                <div className ="ui move up reveal">
                   <div style={divStyle} className = {this.props.data.id % 2 === 0 ? "visible content ui secondary segment react-full-width" : "visible content ui segment react-full-width"}>
                     <div>
-                      <div className="ui dividing header">{this.props.data.show}</div> 
+                      <div className="ui dividing header">{this.props.data.show}</div>
                       {this.props.data.time}
                     </div>
                   </div>
@@ -31,7 +31,7 @@ var TVList = React.createClass({
             </div>
           </div>
           );
-      } 
+      }
 });
 
 module.exports = TVList;
