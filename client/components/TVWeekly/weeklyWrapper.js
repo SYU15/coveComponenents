@@ -1,10 +1,14 @@
 var React = require('react');
 var WeeklyTable = require('./weeklyTable.js');
+var dataUtils = require('../../utils/dataProcessing.js');
+var data = require('../../../data/data.js');
 
 var WeeklyWrapper = React.createClass({
-  // getInitialState: function() {
-  //   return tabStore.getApiData();
-  // },
+  getInitialState: function() {
+    return {
+     apiData: dataUtils.weeklyListings(data) 
+    };
+  },
   // componentDidMount: function() {
   //   if(this.isMounted()) {
   //     tabStore.addChangeListener(this.onChange);
@@ -20,7 +24,7 @@ var WeeklyWrapper = React.createClass({
   render: function() {
       return (
         <div>
-          <WeeklyTable />
+          <WeeklyTable data={this.state.apiData}/>
         </div>
         );
     }

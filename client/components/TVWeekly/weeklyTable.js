@@ -1,7 +1,7 @@
 var React = require('react');
 var Dropdown = require('./dropdown.js');
 var DateHeaders = require('./dateHeaders.js');
-var TimeColumn = require('./timeColumn.js');
+var RowFormat = require('./rowFormat.js');
 
 var WeeklyTable = React.createClass({ 
     
@@ -12,8 +12,8 @@ var WeeklyTable = React.createClass({
             <th><Dropdown /></th>
             <DateHeaders />
           </thead>
-          <tbody>
-          <TimeColumn />
+          <tbody className="react-table-scroll">
+          <RowFormat data={this.props.data} />
           </tbody>
         </table>
         );

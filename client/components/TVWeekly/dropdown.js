@@ -7,7 +7,7 @@ var Dropdown = React.createClass({
 
   componentDidMount: function() {
     $('.ui.dropdown')
-      .dropdown('set selected','0');
+      .dropdown('set selected','KQED');
   },
 
   clickHandler: function() {
@@ -15,16 +15,15 @@ var Dropdown = React.createClass({
   },
   render: function() {
     return (
-      <div>
         <select className="ui compact dropdown">
           <option value="">Choose a channel</option>
-          <option value="0">KQED World</option>
-          <option value="2">KQED Plus</option>
-          <option value="1">KQED Life</option>
-          <option value="3">KQED V-Me</option>
-          <option value="4">KQED Kids</option>
+          <option value="KQED">KQED 9</option>
+          <option value="KQEDL">KQED Life</option>
+          <option value="KQEDDT2">KQED Plus</option>
+          <option value="KQEDV">KQED V-Me</option>
+          <option value="KQEDK">KQED Kids</option>
+          <option value="KQEDDT3">KQED World</option>
         </select>
-      </div>
       );  
   }
 });

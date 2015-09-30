@@ -53,6 +53,22 @@ var dataUtils = {
       newStations.push(newStation);
     }
     return newStations;
+  },
+  weeklyListings: function(data) {
+    var allListings = {};
+    for(var i = 0; i < data.length; i++) {
+      for(var key in data[i].data) {
+        if(key ==='KQEDDT') {
+          continue;
+        }
+        if(allListings[key]) {
+          allListings[key].push(data[i].data[key].listings);
+        } else {
+          allListings[key] = [data[i].data[key].listings];
+        }
+      }
+    }
+    return allListings;
   }
 };
 
