@@ -39,8 +39,8 @@ var First = React.createClass({
             });
           }
           return (
-            <div className="ui one column center aligned page grid">
-              <div className="fourteen wide column">
+            <div className="ui one column  grid">
+              <div className="sixteen wide column">
                  <div className="ui pointing secondary tabs menu">
                   {sidebarStations}
                   <DatePicker date={this.props.date}/>
