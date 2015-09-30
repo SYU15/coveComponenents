@@ -1,4 +1,5 @@
 var React = require('react');
+var Dropdown = require('./dropdown.js');
 
 var WeeklyWrapper = React.createClass({
   // getInitialState: function() {
@@ -17,7 +18,11 @@ var WeeklyWrapper = React.createClass({
   //   this.setState(tabStore.getApiData());
   // },
   render: function() {
-      return <div>Hello World</div>
+      return (
+        <div>
+          <Dropdown />
+        </div>
+        );
     }
 });
 

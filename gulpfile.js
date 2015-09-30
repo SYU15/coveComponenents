@@ -72,6 +72,10 @@ gulp.task('exportComponent', function() {
     bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactTabs.js'), component);
     gutil.log('Component will save to output/reactTabs.js');
     gutil.log('Component will look for an an element with an id of TVTab');
+  } else if(component === 'TVWeekly') {
+    bundleComponent(browserify('./client/components/TVWeekly/render.js'), source('reactWeekly.js'), component);
+    gutil.log('Component will save to output/reactWeekly.js');
+    gutil.log('Component will look for an an element with an id of weeklySchedule');
   } else {
     gutil.log(component + ' is not a KQED library component');
   }
