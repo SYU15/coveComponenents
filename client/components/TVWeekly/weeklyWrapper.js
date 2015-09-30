@@ -1,5 +1,5 @@
 var React = require('react');
-var Dropdown = require('./dropdown.js');
+var WeeklyTable = require('./weeklyTable.js');
 
 var WeeklyWrapper = React.createClass({
   // getInitialState: function() {
@@ -20,7 +20,7 @@ var WeeklyWrapper = React.createClass({
   render: function() {
       return (
         <div>
-          <Dropdown />
+          <WeeklyTable />
         </div>
         );
     }
