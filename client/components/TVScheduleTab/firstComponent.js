@@ -39,7 +39,7 @@ var First = React.createClass({
             });
           }
           return (
-            <div className="ui one column  page grid">
+            <div className="ui one column  grid">
               <div className="sixteen wide column">
                  <div className="ui pointing secondary tabs menu">
                   {sidebarStations}
