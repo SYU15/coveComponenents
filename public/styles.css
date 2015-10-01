@@ -40,3 +40,6 @@
 div.two.wide.column {
   padding: 0 !important;
 }
+.react-center-icon {
+  margin: auto !important;
+}

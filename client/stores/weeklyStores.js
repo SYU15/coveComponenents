@@ -6,6 +6,12 @@ var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 var channel = 'KQED';
 
+var data;
+
+var setApiData = function(newData) {
+  data = newData;
+};
+
 var weeklyStore = assign({}, EventEmitter.prototype, {
   getChannel: function() {
     return {
@@ -15,6 +21,11 @@ var weeklyStore = assign({}, EventEmitter.prototype, {
   setChannel: function(currentChannel) {
     channel = currentChannel;
   },
+  getApiData: function() {
+      return {
+       apiData: data
+      };
+    },
   emitChange: function() {
      this.emit(CHANGE_EVENT);
    },
@@ -28,12 +39,22 @@ var weeklyStore = assign({}, EventEmitter.prototype, {
    }
 });
 
-
 AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
     case AppConstants.WEEKLY:
       weeklyStore.setChannel(action.channel);
+      weeklyStore.emitChange();
+      break;
+    case AppConstants.PENDING_WEEKLY:
+      weeklyStore.emitChange();
+      break;
+    case AppConstants.WEEKLY_LOADED:
+      setApiData(action.data);
+      weeklyStore.emitChange();
+      break;
+    case AppConstants.WEEKLY_ERROR:
+      setApiData(action.data);
       weeklyStore.emitChange();
       break;
     default:
@@ -43,4 +64,3 @@ AppDispatcher.register(function(payload) {
   });
 
 module.exports = weeklyStore;
-
