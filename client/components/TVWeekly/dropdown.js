@@ -1,4 +1,6 @@
 var React = require('react');
+var actions = require('../../actions/appActions.js');
+
 var $ = require('jquery');
 var dropdown = require('../../../bower_components/semantic-ui/dist/components/dropdown.min.js');
 require('../../../bower_components/semantic-ui/dist/components/transition.min.js');
@@ -6,12 +8,14 @@ require('../../../bower_components/semantic-ui/dist/components/transition.min.js
 var Dropdown = React.createClass({
 
   componentDidMount: function() {
+    $('.ui.dropdown').dropdown('set selected', 'KQED');
     $('.ui.dropdown')
-      .dropdown('set selected','KQED');
-  },
-
-  clickHandler: function() {
-
+      .dropdown({
+        onChange: function() {
+          var channel = $('.ui.dropdown').dropdown('get value');
+          actions.changeWeeklyStation(channel);
+        }
+      });
   },
   render: function() {
     return (
