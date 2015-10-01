@@ -15,7 +15,7 @@ var WeeklyTable = React.createClass({
       return <div className="item"><SingleHeader data={day} key={i}/></div>
     });     
       return(
-          <div className="ui grid"> 
+          <div> 
           <div className="ui eight item menu">       
             <Dropdown />
             {rows}
