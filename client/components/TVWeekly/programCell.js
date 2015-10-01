@@ -1,5 +1,6 @@
 var React = require('react');
 var moment = require('moment');
+var ical = require('ics');
 
 var ProgramCell = React.createClass({
   formatTime: function(time) {

@@ -10,8 +10,8 @@ var timeUtils = {
   },
   weekCalculation: function() {
       var week = [];
-      var startWeek = moment().startOf('isoWeek').subtract(1, 'days');
-      var endWeek = moment().endOf('isoWeek').subtract(2, 'days');
+      var startWeek = moment();
+      var endWeek = moment().add(6, 'days');
       
       week.push({
           day: startWeek.format('dddd'), 
