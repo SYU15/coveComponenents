@@ -21,9 +21,9 @@ var RowFormat = React.createClass({
     });
 
     var rows2 = this.props.data[this.state.channel].map(function(day, i){
-      return <div className="two wide column"><ProgramColumn data={day} key={i} /></div>
+      return <div className="two wide column" key={i}><ProgramColumn data={day} /></div>
     });
-    return <div className="ui grid"><div className="two wide column">{rows}</div>{rows2}</div>
+    return <div className="ui equal width internally celled center aligned stackable grid"><div className="two wide column">{rows}</div>{rows2}</div>
   }
 });
 

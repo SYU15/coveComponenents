@@ -23,13 +23,16 @@
 .react-padded {
   margin: 2% !important;
 }
-.react-cell-padded {
+.react-cell {
   height: 150px;
+  /*border: 1px solid black;
+  border-collapse: collapse;
+  margin:-1px 0 0 -1px;*/
 }
-/*.react-table-scroll {
+.react-table-scroll {
   display: block;
   height: 550px;
   overflow: auto;
   overflow-x: hidden;
-}*/
+}
 

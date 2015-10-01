@@ -12,11 +12,11 @@ var WeeklyTable = React.createClass({
   },
   render: function() {
     var rows = this.props.week.map(function(day, i){
-      return <div className="item"><SingleHeader data={day} key={i}/></div>
+      return <div className="item" key={i}><SingleHeader data={day} /></div>
     });     
       return(
           <div> 
-          <div className="ui eight item menu">       
+          <div className="ui eight item equal width stackable attached menu">       
             <Dropdown />
             {rows}
           </div>

@@ -3,9 +3,8 @@ var ProgramCell = require('./programCell.js');
 
 var ProgramColumn = React.createClass({
   render: function() {
-    // console.log(this.props.data);
     var rows = this.props.data.map(function(program, i){
-          return <ProgramCell data={program} />
+          return <div key={i}><ProgramCell data={program} /></div>
     });
 
     return <div>{rows}</div>
