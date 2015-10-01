@@ -15,15 +15,17 @@ var Dropdown = React.createClass({
   },
   render: function() {
     return (
-        <select className="ui compact dropdown">
-          <option value="">Choose a channel</option>
-          <option value="KQED">KQED 9</option>
-          <option value="KQEDL">KQED Life</option>
-          <option value="KQEDDT2">KQED Plus</option>
-          <option value="KQEDV">KQED V-Me</option>
-          <option value="KQEDK">KQED Kids</option>
-          <option value="KQEDDT3">KQED World</option>
-        </select>
+        <div className="item">
+          <select className="ui compact dropdown">
+            <option value="">Choose a channel</option>
+            <option value="KQED">KQED 9</option>
+            <option value="KQEDL">KQED Life</option>
+            <option value="KQEDDT2">KQED Plus</option>
+            <option value="KQEDV">KQED V-Me</option>
+            <option value="KQEDK">KQED Kids</option>
+            <option value="KQEDDT3">KQED World</option>
+          </select>
+        </div>
       );  
   }
 });

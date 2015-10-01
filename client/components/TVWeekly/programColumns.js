@@ -9,8 +9,7 @@ var ProgramColumns = React.createClass({
   },
   render: function() {
     var rows = this.props.data[this.state.channel].map(function(day, i){
-      console.log('called');
-      return <tr key={i}><ProgramColumn data={day} key={i} /></tr>
+      return <ProgramColumn data={day} key={i} />
     });
 
     return <div>{rows}</div>

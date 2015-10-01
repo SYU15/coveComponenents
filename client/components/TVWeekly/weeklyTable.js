@@ -1,21 +1,27 @@
 var React = require('react');
 var Dropdown = require('./dropdown.js');
-var DateHeaders = require('./dateHeaders.js');
 var RowFormat = require('./rowFormat.js');
+var SingleHeader = require('./singleHeader.js');
+var timeUtils = require('../../utils/timeProcessing.js');
 
-var WeeklyTable = React.createClass({ 
-    
-    render: function() {
+var WeeklyTable = React.createClass({
+  getDefaultProps: function() {
+    return {
+     week: timeUtils.weekCalculation()
+   };
+  },
+  render: function() {
+    var rows = this.props.week.map(function(day, i){
+      return <div className="item"><SingleHeader data={day} key={i}/></div>
+    });     
       return(
-        <table className="ui celled fixed table">
-          <thead>
-            <th><Dropdown /></th>
-            <DateHeaders />
-          </thead>
-          <tbody className="react-table-scroll">
-          <RowFormat data={this.props.data} />
-          </tbody>
-        </table>
+          <div className="ui grid"> 
+          <div className="ui eight item menu">       
+            <Dropdown />
+            {rows}
+          </div>
+            <RowFormat data={this.props.data} />
+        </div>
         );
     }
 });
