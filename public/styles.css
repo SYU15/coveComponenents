@@ -43,3 +43,9 @@ div.two.wide.column {
 .react-center-icon {
   margin: auto !important;
 }
+
+.react-small-description {
+  font-size: 10px;
+  line-height: 0;
+  font-weight: 200;
+}

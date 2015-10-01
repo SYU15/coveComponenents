@@ -11,11 +11,16 @@ var ProgramCell = React.createClass({
         };
     return (
       <div style={divStyle} className="react-cell">
-        <h5 className="ui header">{this.props.data.title}
-          <div className="sub header">{this.formatTime(this.props.data.start_time)}</div>
-        </h5>
-        <i>{this.props.data.episode_title}</i>
-        <div className="react-clickable"><i className="small calendar outline icon"></i>Add to Calendar</div>
+      <div className="ui basic segment" style={divStyle}>
+          <h5 className="ui header">{this.props.data.title}
+            <div className="sub header">{this.formatTime(this.props.data.start_time)}</div>
+            <i className="react-small-description">{this.props.data.episode_title}</i>
+          </h5>
+          <div className="ui bottom attached basic label react-clickable">
+            <i className="small calendar outline icon"></i>
+            Add to Calendar
+            </div>
+        </div>
       </div>
       );
   }
