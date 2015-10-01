@@ -6,10 +6,17 @@ var ProgramCell = React.createClass({
     return moment(time, 'HHmm').format('h:mm A');
   },
   render: function() {
+    var divStyle = {
+          height: (100 * (this.props.data.minutes/30)).toString()
+        };
     return (
-      <h4 className="ui header">{this.props.data.title}
-      <div className="ui sub header">{this.formatTime(this.props.data.start_time)}</div>
-      </h4>
+      <div style={divStyle} className="react-cell">
+        <h5 className="ui header">{this.props.data.title}
+          <div className="sub header">{this.formatTime(this.props.data.start_time)}</div>
+        </h5>
+        <i>{this.props.data.episode_title}</i>
+        <div className="react-clickable"><i className="small calendar outline icon"></i>Add to Calendar</div>
+      </div>
       );
   }
 });

@@ -57,6 +57,12 @@ var AppActions = {
       actionType: AppConstants.SCROLL,
       scrollPosition: scrollPosition
     });   
+  },
+  changeWeeklyStation: function(channel) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.WEEKLY,
+      channel: channel
+    }); 
   }
 };
 module.exports = AppActions;

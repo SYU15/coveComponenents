@@ -5,5 +5,6 @@ module.exports = {
   LOADED: 'LOADED',
   ERROR: 'ERROR',
   PRIMETIME: 'PRIMETIME',
-  SCROLL: 'SCROLL'
+  SCROLL: 'SCROLL',
+  WEEKLY: 'WEEKLY'
 };

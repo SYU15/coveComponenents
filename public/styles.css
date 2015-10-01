@@ -17,22 +17,26 @@
 .react-small-item {
   font-size: 10px;
 }
+
 .react-should-hide {
   display: none;
 }
+
 .react-padded {
   margin: 2% !important;
 }
+
 .react-cell {
-  height: 150px;
-  /*border: 1px solid black;
-  border-collapse: collapse;
-  margin:-1px 0 0 -1px;*/
-}
-.react-table-scroll {
-  display: block;
-  height: 550px;
-  overflow: auto;
-  overflow-x: hidden;
+  height: 200px;
+  border: 1px solid #d4d4d5;
+  overflow:hidden;
 }
 
+.react-grid-scroll {
+  height: 600px;
+  overflow: auto;
+}
+
+div.two.wide.column {
+  padding: 0 !important;
+}
