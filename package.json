@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "^4.13.3",
     "flux": "^2.1.1",
+    "ics": "^0.4.1",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
     "moment-range": "^2.0.3",
@@ -17,6 +18,7 @@
     "browserify": "^10.2.4",
     "browserify-shim": "^3.8.10",
     "gulp": "^3.9.0",
+    "gulp-uglify": "^1.4.1",
     "gulp-util": "^3.0.6",
     "jest-cli": "^0.5.0",
     "vinyl-source-stream": "^1.1.0",
@@ -38,13 +40,20 @@
     ]
   },
   "browser": {
-    "tab": "./bower_components/semantic/dist/components/tab.min.js"
+    "tab": "./bower_components/semantic/dist/components/tab.min.js",
+    "dropdown": "./bower_components/semantic/dist/components/dropdown.min.js"
   },
   "browserify-shim": {
     "tab": {
       "depends": [
         "jquery:jQuery"
       ]
+    },
+    "dropdown": {
+      "depends": [
+        "jquery:jQuery",
+        "./bower_components/semantic-ui/dist/components/transition.min.js:transition"
+      ]      
     }
   }
 }

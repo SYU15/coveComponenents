@@ -7,7 +7,29 @@ var timeUtils = {
     } else {
       return currentTime;
     }
-  }
+  },
+  weekCalculation: function() {
+      var week = [];
+      var startWeek = moment();
+      var endWeek = moment().add(6, 'days');
+      
+      week.push({
+          day: startWeek.format('dddd'), 
+          date: startWeek.format('D'),
+          month: startWeek.format('M')
+          });
+
+      while(startWeek.isBefore(endWeek) && week.length < 8) {
+        startWeek = startWeek.add(1, 'days');
+        week.push({
+          day: startWeek.format('dddd'), 
+          date: startWeek.format('D'),
+          month: startWeek.format('M')
+          });
+      }
+
+      return week;
+    }
 };
 
 module.exports = timeUtils;
