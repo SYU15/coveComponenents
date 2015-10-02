@@ -19,7 +19,7 @@ var timeUtils = {
           month: startWeek.format('M')
           });
 
-      while(startWeek.isBefore(endWeek)) {
+      while(startWeek.isBefore(endWeek) && week.length < 8) {
         startWeek = startWeek.add(1, 'days');
         week.push({
           day: startWeek.format('dddd'), 

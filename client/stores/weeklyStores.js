@@ -7,7 +7,6 @@ var CHANGE_EVENT = 'change';
 var channel = 'KQED';
 
 var data;
-var calendar = {};
 
 var setApiData = function(newData) {
   data = newData;
@@ -27,12 +26,6 @@ var weeklyStore = assign({}, EventEmitter.prototype, {
        apiData: data
       };
     },
-  getCalendarData: function() {
-    return calendar;
-  },
-  setCalendarData: function() {
-
-  },
   emitChange: function() {
      this.emit(CHANGE_EVENT);
    },
@@ -62,10 +55,6 @@ AppDispatcher.register(function(payload) {
       break;
     case AppConstants.WEEKLY_ERROR:
       setApiData(action.data);
-      weeklyStore.emitChange();
-      break;
-    case AppConstants.CALENDAR:
-      setCalendarData(action.calendar);
       weeklyStore.emitChange();
       break;
     default:

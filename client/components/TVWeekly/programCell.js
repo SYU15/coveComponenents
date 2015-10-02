@@ -1,31 +1,11 @@
 var React = require('react');
 var moment = require('moment');
-// var ical = require('ics');
-// var fs = require('fs');
 var $ = require('jquery');
 
 var ProgramCell = React.createClass({
   formatTime: function(time) {
     return moment(time, 'HHmm').format('h:mm A');
   },
-  componentDidMount: function() {
-  },
-  // icsEvent: function() {
-  //   console.log('registered');
-  //   var options = {
-  //     eventName: this.props.data.title,
-  //     dtstart: moment.unix(this.props.data.timestamp).format(),
-  //     dtend: moment.unix(this.props.data.timestamp).add(this.props.data.minutes, 'minutes').format()
-  //   };
-
-  //   ical.createEvent(options, null, function(err, success) {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-     
-  //     console.log(success); // returns filepath 
-  //   });
-  // },
   render: function() {
     var divStyle = {
           height: (100 * (this.props.data.minutes/30)).toString()

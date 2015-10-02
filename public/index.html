@@ -5,11 +5,18 @@
   <body>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
     <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
-    <script type="text/javascript">
-    addthisevent.settings({
-        license    : "00000000000000000000",
-        css        : false
-    });
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+       
+        addthisevent.settings({
+            license    : "00000000000000000000",
+            css        : false
+        });
+    
+        $(document).on('click','.ui.dropdown',function(){
+            console.log('registered');
+            addthisevent.refresh();
+        });
     </script>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <div class="ui grid" id="app"></div>
