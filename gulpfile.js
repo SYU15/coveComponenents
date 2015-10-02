@@ -6,6 +6,7 @@ var watchify = require('watchify');
 var browserSync = require('browser-sync').create();
 var babelify = require('babelify');
 var argv = require('yargs').argv;
+var uglify = require('gulp-uglify')
 
 //abstracts this section so it can be reused
 var bundle = function(bundler) {
@@ -42,6 +43,12 @@ var bundleComponent = function(bundler, source, component) {
     .pipe(gulp.dest('output/'));
     
 };
+
+gulp.task('uglify', function(){
+  return gulp.src('public/bundle.js')
+    .pipe(uglify({mangle: false}))
+    .pipe(gulp.dest('output/'));
+});
 
 gulp.task('watch', function(){
   
