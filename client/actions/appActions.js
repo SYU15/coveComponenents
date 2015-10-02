@@ -1,6 +1,6 @@
 var AppConstants = require('../constants/appConstants.js');
 var AppDispatcher = require('../dispatchers/appDispatcher.js');
-var dateUtils = require('../utils/dataProcessing.js');
+var dataUtils = require('../utils/dataProcessing.js');
 var $ = require('jquery');
 var TabStores = require('../stores/tabStores.js');
 
@@ -38,7 +38,7 @@ var AppActions = {
             result = JSON.parse(result);
           }
           
-          var data = dateUtils.dailyListings(result.data);
+          var data = dataUtils.dailyListings(result.data);
           AppDispatcher.handleViewAction({
             actionType: AppConstants.LOADED,
             data: data
@@ -57,6 +57,38 @@ var AppActions = {
       actionType: AppConstants.SCROLL,
       scrollPosition: scrollPosition
     });   
-  }
+  },
+  changeWeeklyStation: function(channel) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.WEEKLY,
+      channel: channel
+    }); 
+  },
+  getWeeklyData: function() {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.PENDING_WEEKLY
+    });
+    
+    $.ajax({
+        url: 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings_week/kqed/',
+        type: 'GET',
+        success: function(result){
+          if(typeof result === 'string') {
+            result = JSON.parse(result);
+          }
+          var data = dataUtils.weeklyListings(result);
+          AppDispatcher.handleViewAction({
+            actionType: AppConstants.WEEKLY_LOADED,
+            data: data
+          });
+        },
+        error: function(result) {
+          AppDispatcher.handleViewAction({
+            actionType: AppConstants.WEEKLY_ERROR,
+            data: result
+          });
+        }
+    });
+  },
 };
 module.exports = AppActions;

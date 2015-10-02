@@ -6,6 +6,7 @@ var watchify = require('watchify');
 var browserSync = require('browser-sync').create();
 var babelify = require('babelify');
 var argv = require('yargs').argv;
+var uglify = require('gulp-uglify')
 
 //abstracts this section so it can be reused
 var bundle = function(bundler) {
@@ -43,6 +44,12 @@ var bundleComponent = function(bundler, source, component) {
     
 };
 
+gulp.task('uglify', function(){
+  return gulp.src('public/bundle.js')
+    .pipe(uglify({mangle: false}))
+    .pipe(gulp.dest('output/'));
+});
+
 gulp.task('watch', function(){
   
   var watcher = watchify(browserify('./client/App.js', watchify.args));
@@ -69,9 +76,13 @@ gulp.task('browserify', function() {
 gulp.task('exportComponent', function() {
   var component = argv.component;
   if(component === 'TVScheduleTab') {
-    bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactTabs.js'), component);
-    gutil.log('Component will save to output/reactTabs.js');
+    bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactDailySchedule.js'), component);
+    gutil.log('Component will save to output/reactDailySchedule.js');
     gutil.log('Component will look for an an element with an id of TVTab');
+  } else if(component === 'TVWeekly') {
+    bundleComponent(browserify('./client/components/TVWeekly/render.js'), source('reactWeeklySchedule.js'), component);
+    gutil.log('Component will save to output/reactWeekly.js');
+    gutil.log('Component will look for an an element with an id of weeklySchedule');
   } else {
     gutil.log(component + ' is not a KQED library component');
   }
