@@ -60,7 +60,7 @@ h5.ui.header .sub.header {
 }
 
 /* General */
-.addthisevent                 {visibility:hidden;}
+.addthisevent                 {visibility:visible;}
 .addthisevent span            {display:none!important;}
 .addthisevent .data           {display:none!important;}
 
