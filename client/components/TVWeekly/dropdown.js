@@ -2,8 +2,7 @@ var React = require('react');
 var actions = require('../../actions/appActions.js');
 
 var $ = require('jquery');
-var dropdown = require('../../../bower_components/semantic-ui/dist/components/dropdown.min.js');
-require('../../../bower_components/semantic-ui/dist/components/transition.min.js');
+var dropdown = require('dropdown');
 
 var Dropdown = React.createClass({
 

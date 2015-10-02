@@ -40,13 +40,20 @@
     ]
   },
   "browser": {
-    "tab": "./bower_components/semantic/dist/components/tab.min.js"
+    "tab": "./bower_components/semantic/dist/components/tab.min.js",
+    "dropdown": "./bower_components/semantic/dist/components/dropdown.min.js"
   },
   "browserify-shim": {
     "tab": {
       "depends": [
         "jquery:jQuery"
       ]
+    },
+    "dropdown": {
+      "depends": [
+        "jquery:jQuery",
+        "./bower_components/semantic-ui/dist/components/transition.min.js:transition"
+      ]      
     }
   }
 }

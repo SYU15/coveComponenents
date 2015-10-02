@@ -76,11 +76,11 @@ gulp.task('browserify', function() {
 gulp.task('exportComponent', function() {
   var component = argv.component;
   if(component === 'TVScheduleTab') {
-    bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactTabs.js'), component);
-    gutil.log('Component will save to output/reactTabs.js');
+    bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactDailySchedule.js'), component);
+    gutil.log('Component will save to output/reactDailySchedule.js');
     gutil.log('Component will look for an an element with an id of TVTab');
   } else if(component === 'TVWeekly') {
-    bundleComponent(browserify('./client/components/TVWeekly/render.js'), source('reactWeekly.js'), component);
+    bundleComponent(browserify('./client/components/TVWeekly/render.js'), source('reactWeeklySchedule.js'), component);
     gutil.log('Component will save to output/reactWeekly.js');
     gutil.log('Component will look for an an element with an id of weeklySchedule');
   } else {
