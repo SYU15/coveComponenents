@@ -22,15 +22,15 @@ var RowFormat = React.createClass({
     this.setState(weeklyStore.getChannel());
   }, 
   render: function() {
-    var data = this.props.data;
 
-    var rows = this.props.day.map(function(hour, i){
+    var rows = this.props.day.map((hour, i) => {
       return <div key={i}><TimeCell time={hour} /></div>
     });
 
     if(this.props.data && Array.isArray(this.props.data[this.state.channel])) {
-      var rows2 = this.props.data[this.state.channel].map(function(day, i){
-        return <div className="two wide column " key={i}><ProgramColumn data={day} /></div>
+      var rows2 = this.props.data[this.state.channel].map((day, i) => {
+        console.log(this.props.week[i]);
+        return <div className="two wide column" key={i}><ProgramColumn data={day} /></div>
       });
     } else if (this.props.data) {
       var rows2 = <div className="ten wide column"><div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div></div>
@@ -38,7 +38,7 @@ var RowFormat = React.createClass({
 
     return (
           <div className="ui equal width internally celled stackable grid react-grid-scroll">
-            <div className="two wide center aligned column computer only">{rows}</div>
+            <div className="two wide center aligned column computer tablet only">{rows}</div>
             {rows2}
             <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>
           </div>

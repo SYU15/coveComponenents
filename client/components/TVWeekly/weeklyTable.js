@@ -20,7 +20,7 @@ var WeeklyTable = React.createClass({
             <Dropdown />
             {rows}
           </div>
-            <RowFormat data={this.props.data} />
+            <RowFormat data={this.props.data} week={this.props.week} />
         </div>
         );
     }

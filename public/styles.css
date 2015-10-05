@@ -29,12 +29,16 @@
 .react-cell {
   height: 200px;
   border: 1px solid #d4d4d5;
-/*  overflow:hidden;
-*/}
+}
 
 .react-grid-scroll {
   height: 600px;
   overflow: auto;
+}
+@media (max-width: 767px) {
+  .react-grid-scroll {
+    height: auto;
+  }
 }
 
 div.two.wide.column {
