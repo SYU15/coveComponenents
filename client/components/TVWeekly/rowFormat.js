@@ -28,10 +28,12 @@ var RowFormat = React.createClass({
       return <div key={i}><TimeCell time={hour} /></div>
     });
 
-    if(this.props.data) {
+    if(this.props.data && Array.isArray(this.props.data[this.state.channel])) {
       var rows2 = this.props.data[this.state.channel].map(function(day, i){
         return <div className="two wide column " key={i}><ProgramColumn data={day} /></div>
       });
+    } else if (this.props.data) {
+      var rows2 = <div className="ten wide column"><div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div></div>
     }
 
     return (

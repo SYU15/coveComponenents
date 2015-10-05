@@ -32,11 +32,13 @@ var First = React.createClass({
       render: function() {
           var shouldShow = this.state.shouldShow;
           var sidebarStations = [];
-          if(this.props.apiData) {
+          if(this.props.apiData && Array.isArray(this.props.apiData)) {
             var rows = this.props.apiData.map(function(station, i){
               sidebarStations.push(<SidebarEntry data={station.station} key={station.station}></SidebarEntry>);
               return <TVStream shouldShow={shouldShow} data={station} key={station.station}></TVStream>
             });
+          } else if (this.props.apiData) {
+            var rows = <div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div>
           }
           return (
             <div className="ui one column  grid">
