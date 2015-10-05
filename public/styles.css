@@ -29,12 +29,29 @@
 .react-cell {
   height: 200px;
   border: 1px solid #d4d4d5;
-/*  overflow:hidden;
-*/}
+}
 
 .react-grid-scroll {
   height: 600px;
   overflow: auto;
+}
+
+.react-dropdown {
+  padding-bottom: 0 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+@media (max-width: 767px) {
+  .react-grid-scroll {
+    height: auto;
+  }
+}
+
+@media (max-width: 1060px) {
+  .react-dropdown {
+    font-size: 12px;
+    margin-bottom: 1.355rem !important;
+  }
 }
 
 div.two.wide.column {

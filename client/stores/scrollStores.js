@@ -37,7 +37,7 @@ AppDispatcher.register(function(payload) {
       scrollStore.emitChange();
       break;
     default:
-      console.log('no registered action');
+      // console.log('no registered action');
     }
     return true;
   });

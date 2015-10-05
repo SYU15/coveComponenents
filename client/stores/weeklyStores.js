@@ -58,7 +58,7 @@ AppDispatcher.register(function(payload) {
       weeklyStore.emitChange();
       break;
     default:
-      console.log('no registered action');
+      // console.log('no registered action');
     }
     return true;
   });
