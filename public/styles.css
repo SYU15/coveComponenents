@@ -47,6 +47,13 @@
   }
 }
 
+@media (max-width: 1060px) {
+  .react-dropdown {
+    font-size: 12px;
+    margin-bottom: 1.36rem !important;
+  }
+}
+
 div.two.wide.column {
   padding: 0 !important;
 }
