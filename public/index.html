@@ -4,8 +4,11 @@
 </head>
   <body>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.css">
-    <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <div class="ui grid" id="app"></div>
+    <script src="bundle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
     <script>
        
         addthisevent.settings({
@@ -13,12 +16,9 @@
             css        : false
         });
 
-        $(document).on('change','.ui.dropdown',function(){
+        $(document).on('click','.ui.dropdown',function(){
             addthisevent.refresh();
         });
     </script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <div class="ui grid" id="app"></div>
-    <script src="bundle.js"></script>
   </body>
 </html>
