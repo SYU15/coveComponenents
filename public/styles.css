@@ -35,9 +35,18 @@
   height: 600px;
   overflow: auto;
 }
+
+.react-mobile-menu {
+  display: none;
+}
+
 @media (max-width: 767px) {
   .react-grid-scroll {
     height: auto;
+  }
+  .react-mobile-menu {
+    display: inherit;
+    border: 1px solid #d4d4d5;
   }
 }
 
