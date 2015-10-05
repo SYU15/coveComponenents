@@ -3,6 +3,7 @@ var TimeCell = require('./timeCell.js');
 var ProgramColumn = require('./programColumn.js');
 var weeklyStore = require('../../stores/weeklyStores.js');
 var MobileTimeHeader = require('./mobileTimeHeader.js');
+var Dropdown = require('./dropdown.js');
 
 var RowFormat = React.createClass({
   getInitialState: function() {
@@ -25,7 +26,11 @@ var RowFormat = React.createClass({
   render: function() {
 
     var rows = this.props.day.map((hour, i) => {
-      return <div key={i}><TimeCell time={hour} /></div>
+      return (
+        <div key={i}>
+          <TimeCell time={hour} />
+        </div>
+        );
     });
 
     if(this.props.data && Array.isArray(this.props.data[this.state.channel])) {
@@ -43,7 +48,7 @@ var RowFormat = React.createClass({
 
     return (
           <div className="ui equal width internally celled stackable grid react-grid-scroll">
-            <div className="two wide center aligned column computer tablet only">{rows}</div>
+            <div className="two wide column computer tablet only"><Dropdown />{rows}</div>
             {rows2}
             <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>
           </div>

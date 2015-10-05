@@ -18,7 +18,7 @@ var Dropdown = React.createClass({
   },
   render: function() {
     return (
-        <div className="item">
+        <div className="ui basic segment react-dropdown">
           <select className="ui compact dropdown">
             <option value="">Choose a channel</option>
             <option value="KQED">KQED 9</option>

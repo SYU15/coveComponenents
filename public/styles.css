@@ -36,17 +36,14 @@
   overflow: auto;
 }
 
-.react-mobile-menu {
-  display: none;
+.react-dropdown {
+  padding-bottom: 0 !important;
+  margin-bottom: 0.85rem !important;
 }
 
 @media (max-width: 767px) {
   .react-grid-scroll {
     height: auto;
-  }
-  .react-mobile-menu {
-    display: inherit;
-    border: 1px solid #d4d4d5;
   }
 }
 
