@@ -7,7 +7,7 @@ var ProgramCell = React.createClass({
     //shorten title for blocks less than 30 minutes long
     if(title.length > 50 && this.props.data.minutes < 30) {
       return title.slice(0, 50) + "...";
-    } else if(this.props.data.minutes <=15) {
+    } else if(this.props.data.minutes <=15) { //if program is less than 15 minutes, don't display episode title
       return '';
     } else {
       return title;
@@ -17,9 +17,11 @@ var ProgramCell = React.createClass({
     return moment(time, 'HHmm').format('h:mm A');
   },
   render: function() {
+    //sets height of each program based on number of minutes
     var divStyle = {
           height: (150 * (this.props.data.minutes/30)).toString()
         };
+        //addthisevent does not show up until user clicks on label
     return (
       <div style={divStyle} className="react-cell">
       <div className="ui basic segment" onClick={this.show} style={divStyle}>

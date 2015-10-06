@@ -7,7 +7,7 @@ var moment = require('moment');
 var CHANGE_EVENT = 'change';
 
 var hide = true;
-
+//toggleShow is used for primetime views
 var toggleShow = function() {
   hide = !hide;
 };

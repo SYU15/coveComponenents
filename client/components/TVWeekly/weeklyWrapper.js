@@ -4,6 +4,7 @@ var weeklyStore = require('../../stores/weeklyStores.js');
 var actions = require('../../actions/appActions.js');
 
 var WeeklyWrapper = React.createClass({
+  //gets API data from weekly endpoint
   getInitialState: function() {
      return weeklyStore.getApiData();
   },
