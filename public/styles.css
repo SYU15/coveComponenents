@@ -41,18 +41,28 @@
   margin-bottom: 0.85rem !important;
 }
 
-@media (max-width: 767px) {
-  .react-grid-scroll {
-    height: auto;
-  }
-}
-
 @media (max-width: 1060px) {
   .react-dropdown {
     font-size: 12px;
     margin-bottom: 1.355rem !important;
   }
 }
+
+@media (max-width: 767px) {
+  .react-grid-scroll {
+    height: auto;
+  }
+  .react-mobile-hide {
+    display: none;
+  }
+  .react-dropdown {
+    font-size: 18px;
+    width: 200px !important;
+    display:block !important;
+    margin: auto !important;
+  }
+}
+
 
 div.two.wide.column {
   padding: 0 !important;
