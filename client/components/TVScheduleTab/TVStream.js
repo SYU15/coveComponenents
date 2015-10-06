@@ -11,6 +11,8 @@ var TVStream = React.createClass({
       componentDidMount: function() {
         var anchor = document.getElementById('anchor') || null;
         var tabs = $('.react-schedule-tab');
+        //when component mounted the first time, set position of scrollbar to position of program that matches current time
+        //should only happen during first load, afterward, lets scrollStores set scroll position based on user input
         if(this.state.firstLoad && anchor) {
           tabs.scrollTop(anchor.offsetTop);
           this.setState({firstLoad: false});

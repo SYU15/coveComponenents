@@ -7,6 +7,7 @@ var TabStores = require('../stores/tabStores.js');
 var _apiCall = 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/';
 
 var AppActions = {
+  //actions used by TV Daily Schedule Tabs starts here (used by tabStores)
   nextDay: function() {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.NEXT_DAY
@@ -20,12 +21,8 @@ var AppActions = {
     });
     this.getData(TabStores.getApiData().apiCall) ;       
   },
-  primetime: function() {
-    AppDispatcher.handleViewAction({
-      actionType: AppConstants.PRIMETIME
-    });    
-  },
   getData: function(apiUrl) {
+    //before AJAX call, set status to pending
     AppDispatcher.handleViewAction({
       actionType: AppConstants.PENDING_CALL
     });
@@ -39,12 +36,14 @@ var AppActions = {
           }
           
           var data = dataUtils.dailyListings(result.data);
+          //if successful, fire off loaded event
           AppDispatcher.handleViewAction({
             actionType: AppConstants.LOADED,
             data: data
           });
         },
         error: function(result) {
+          //if error, fire off error event
           AppDispatcher.handleViewAction({
             actionType: AppConstants.ERROR,
             data: result
@@ -52,12 +51,20 @@ var AppActions = {
         }
     });
   },
+  //this is used by primeStores
+  primetime: function() {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.PRIMETIME
+    });    
+  },
+  //this is used by scrollStores
   scroll: function(scrollPosition) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.SCROLL,
       scrollPosition: scrollPosition
     });   
   },
+  //actions used by TV Weekly Schedule start here (used by weeklyStores)
   changeWeeklyStation: function(channel) {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.WEEKLY,

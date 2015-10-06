@@ -6,6 +6,7 @@ var MobileTimeHeader = require('./mobileTimeHeader.js');
 var Dropdown = require('./dropdown.js');
 
 var RowFormat = React.createClass({
+  //weeklyStore sets current channel
   getInitialState: function() {
     return weeklyStore.getChannel();
   },
@@ -33,6 +34,7 @@ var RowFormat = React.createClass({
         );
     });
 
+    //checks to see if data is valid AJAX data
     if(this.props.data && Array.isArray(this.props.data[this.state.channel])) {
       var rows2 = this.props.data[this.state.channel].map((day, i) => {
         return (
@@ -42,10 +44,10 @@ var RowFormat = React.createClass({
           </div>
           );
       });
-    } else if (this.props.data) {
+    } else if (this.props.data) { //if not valid, is an error
       var rows2 = <div className="ten wide column"><div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div></div>
     }
-
+    //shows loading wheel in places of rows2 if AJAX data hasn't loaded yet
     return (
           <div className="ui equal width internally celled stackable grid react-grid-scroll">
             <div className="two wide column"><Dropdown /><div className="react-mobile-hide">{rows}</div></div>

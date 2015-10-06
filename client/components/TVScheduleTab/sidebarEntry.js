@@ -13,7 +13,7 @@ var SidebarEntry = React.createClass({
        
           var delay = 1000;
           var timeout = null;
-          
+          //check to see if user has stopped scrolling, if they have, set the state to the last scroll position
           $('.react-schedule-tab').bind('scroll',function(){
               clearTimeout(timeout);
               timeout = setTimeout(function(){

@@ -31,12 +31,13 @@ var First = React.createClass({
 
       render: function() {
           var sidebarStations = [];
+          //check to see if AJAX data has loaded
           if(this.props.apiData && Array.isArray(this.props.apiData)) {
             var rows = this.props.apiData.map((station, i) => {
               sidebarStations.push(<SidebarEntry data={station.station} key={station.station}></SidebarEntry>);
               return <TVStream shouldShow={this.state.shouldShow} data={station} key={station.station}></TVStream>
             });
-          } else if (this.props.apiData) {
+          } else if (this.props.apiData) { //if data has loaded, but not in correct structure, then error event has been fired
             var rows = <div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div>
           }
           return (

@@ -4,8 +4,8 @@ var moment = require('moment');
 var tabStore = require('../../stores/tabStores.js');
 var actions = require('../../actions/appActions.js');
 var $ = require('jquery');
-
 var TVTabWrapper = React.createClass({
+  //sets state to data retrieved from AJAX call
   getInitialState: function() {
     return tabStore.getApiData();
   },
@@ -19,6 +19,7 @@ var TVTabWrapper = React.createClass({
     tabStore.removeChangeListener(this.onChange);
   },
   onChange: function() {
+    //updates data from new AJAX call when user clicks on next/previous day arrows
     this.setState(tabStore.getApiData());
   },
   render: function() {

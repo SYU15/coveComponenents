@@ -14,6 +14,7 @@ var TVList = React.createClass({
         var divStyle = {
           height: (100 * Math.round(this.props.data.minutes/30)).toString()
         };
+        //only add anchor id to entry that broadcast time is within is current time range
         return (
           <div id={this.props.data.shouldAnchor ? "anchor" : ""}>
             <div className={!this.props.data.isPrime && !this.props.shouldShow ? "react-should-hide" : ""}>

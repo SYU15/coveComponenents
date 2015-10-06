@@ -7,7 +7,9 @@ var dropdown = require('dropdown');
 var Dropdown = React.createClass({
 
   componentDidMount: function() {
+    //set default selection to KQED
     $('.ui.dropdown').dropdown('set selected', 'KQED');
+    //when dropdown value changes, set channel in actions
     $('.ui.dropdown')
       .dropdown({
         onChange: function() {
@@ -22,11 +24,11 @@ var Dropdown = React.createClass({
           <select className={this.props.dropClass ? this.props.dropClass : "ui compact dropdown"}>
             <option value="">Choose a channel</option>
             <option value="KQED">KQED 9</option>
-            <option value="KQEDL">KQED Life</option>
-            <option value="KQEDDT2">KQED Plus</option>
-            <option value="KQEDV">KQED V-Me</option>
-            <option value="KQEDK">KQED Kids</option>
-            <option value="KQEDDT3">KQED World</option>
+            <option value="KQEDL">Life</option>
+            <option value="KQEDDT2">Plus</option>
+            <option value="KQEDV">V-Me</option>
+            <option value="KQEDK">Kids</option>
+            <option value="KQEDDT3">World</option>
           </select>
         </div>
       );  
