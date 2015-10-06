@@ -48,7 +48,7 @@ var RowFormat = React.createClass({
 
     return (
           <div className="ui equal width internally celled stackable grid react-grid-scroll">
-            <div className="two wide column computer tablet only"><Dropdown />{rows}</div>
+            <div className="two wide column"><Dropdown /><div className="react-mobile-hide">{rows}</div></div>
             {rows2}
             <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>
           </div>

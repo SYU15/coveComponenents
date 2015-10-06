@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
     <script>
-       
+    $(document).ready(function() {
         addthisevent.settings({
             license    : "00000000000000000000",
             css        : false
@@ -19,6 +19,7 @@
         $(document).on('click','.ui.dropdown',function(){
             addthisevent.refresh();
         });
+    });
     </script>
   </body>
 </html>
