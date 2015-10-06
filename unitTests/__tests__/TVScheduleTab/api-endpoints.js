@@ -45,6 +45,8 @@ describe('API Endpoints', function(){
             expect(data[0].data.KQED.listings[0].title).toExist();
             expect(data[0].data.KQED.listings[0].minutes).toExist();
             expect(data[0].data.KQED.listings[0].description).toExist();
+            expect(data[0].data.KQED.listings[0].timestamp).toExist();
+
           }
       });
   });
