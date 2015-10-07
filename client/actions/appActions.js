@@ -5,6 +5,7 @@ var $ = require('jquery');
 var TabStores = require('../stores/tabStores.js');
 
 var _apiCall = 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/';
+var previousAPI;
 
 var AppActions = {
   //actions used by TV Daily Schedule Tabs starts here (used by tabStores)
@@ -22,34 +23,38 @@ var AppActions = {
     this.getData(TabStores.getApiData().apiCall) ;       
   },
   getData: function(apiUrl) {
-    //before AJAX call, set status to pending
-    AppDispatcher.handleViewAction({
-      actionType: AppConstants.PENDING_CALL
-    });
-    
-    $.ajax({
-        url: apiUrl,
-        type: 'GET',
-        success: function(result){
-          if(typeof result === 'string') {
-            result = JSON.parse(result);
+    //only make the call if the user can see that date (within 14 days)
+    if(previousAPI !== apiUrl) {
+      previousAPI = apiUrl;
+      //before AJAX call, set status to pending
+      AppDispatcher.handleViewAction({
+        actionType: AppConstants.PENDING_CALL
+      });
+      
+      $.ajax({
+          url: apiUrl,
+          type: 'GET',
+          success: function(result){
+            if(typeof result === 'string') {
+              result = JSON.parse(result);
+            }
+            console.log('called');
+            var data = dataUtils.dailyListings(result.data);
+            //if successful, fire off loaded event
+            AppDispatcher.handleViewAction({
+              actionType: AppConstants.LOADED,
+              data: data
+            });
+          },
+          error: function(result) {
+            //if error, fire off error event
+            AppDispatcher.handleViewAction({
+              actionType: AppConstants.ERROR,
+              data: result
+            });
           }
-          
-          var data = dataUtils.dailyListings(result.data);
-          //if successful, fire off loaded event
-          AppDispatcher.handleViewAction({
-            actionType: AppConstants.LOADED,
-            data: data
-          });
-        },
-        error: function(result) {
-          //if error, fire off error event
-          AppDispatcher.handleViewAction({
-            actionType: AppConstants.ERROR,
-            data: result
-          });
-        }
-    });
+      });
+    }
   },
   //this is used by primeStores
   primetime: function() {
