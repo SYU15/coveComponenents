@@ -13,11 +13,10 @@
     $(document).ready(function() {
         addthisevent.settings({
             license    : "00000000000000000000",
-            css        : false
-        });
-
-        $(document).on('click','.ui.dropdown',function(){
-            addthisevent.refresh();
+            css        : false,
+            callback   : function() {
+                addthisevent.refresh();
+            }
         });
     });
     </script>
