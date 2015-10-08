@@ -3,6 +3,7 @@ var AppDispatcher = require('../dispatchers/appDispatcher.js');
 var dataUtils = require('../utils/dataProcessing.js');
 var $ = require('jquery');
 var TabStores = require('../stores/tabStores.js');
+var debounce = require('lodash.debounce');
 
 var _apiCall = 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings/kqed/';
 var previousAPI;
@@ -38,7 +39,6 @@ var AppActions = {
             if(typeof result === 'string') {
               result = JSON.parse(result);
             }
-            console.log('called');
             var data = dataUtils.dailyListings(result.data);
             //if successful, fire off loaded event
             AppDispatcher.handleViewAction({
@@ -103,4 +103,6 @@ var AppActions = {
     });
   },
 };
+
+AppActions.getData = debounce(AppActions.getData, 250);
 module.exports = AppActions;

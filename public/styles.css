@@ -87,7 +87,7 @@ h5.ui.header .sub.header {
 }
 
 /* General */
-.addthisevent                 {visibility:visible;}
+.addthisevent                 {visibility:hidden;}
 .addthisevent span            {display:none!important;}
 .addthisevent .data           {display:none!important;}
 

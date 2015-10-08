@@ -10,8 +10,7 @@ var Arrow = React.createClass({
   },
   render: function() {
     return (
-      <i className={this.props.direction === 'previous' ? 'large chevron icon left react-clickable' : 'large chevron icon right react-clickable'} 
-      onClick={this.props.direction === 'previous' ? this.previousHandler : this.nextHandler}>
+      <i className={this.props.direction === 'previous' ? 'large chevron icon left react-clickable' : 'large chevron icon right react-clickable'} onClick={this.props.direction === 'previous' ? this.previousHandler : this.nextHandler}>
       </i>
       )
   }

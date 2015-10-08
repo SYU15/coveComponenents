@@ -1,8 +1,8 @@
 var React = require('react');
 var scrollStore = require('../../stores/scrollStores.js');
 var actions = require('../../actions/appActions.js');
-var $ = require('jquery')
-;
+var $ = require('jquery');
+
 var SidebarEntry = React.createClass({
       getInitialState: function() {
         return scrollStore.getScroll();

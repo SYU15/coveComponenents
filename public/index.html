@@ -11,15 +11,21 @@
     <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
     <script>
     $(document).ready(function() {
+
         addthisevent.settings({
             license    : "00000000000000000000",
             css        : false
         });
 
+            // callback : ['addthisevent.refresh()']
+
         $(document).on('click','.ui.dropdown',function(){
+            console.log('called');
             addthisevent.refresh();
         });
     });
+
+
     </script>
   </body>
 </html>
