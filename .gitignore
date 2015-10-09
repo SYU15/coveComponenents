@@ -3,4 +3,4 @@ public/bundle.js
 bower_components
 output
 data/
-client/config/apiKey.js
+client/config/ate.js
