@@ -3,3 +3,4 @@ public/bundle.js
 bower_components
 output
 data/
+client/config/ate.js
