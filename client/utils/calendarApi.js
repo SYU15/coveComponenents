@@ -4,16 +4,23 @@ var moment = require('moment');
 var ate = require('../config/ate.js').ATE;
 var calURL;
 
-var calendarCall = function(calType, startTime, endTime, title, description) {
-  startTime = moment.unix(startTime).format('MM/DD/YYYY hh:mm A');
-  endTime = moment.unix(startTime).add(endTime, 'minutes').format('MM/DD/YYYY hh:mm A');
-  title = title.replace(' ', '+');
-  description = description.replace(' ', '+');
+var calendarCall = function(calType, start, endTime, title, description) {
+  var unixConvert = moment.unix(start);
+  var newStart = unixConvert.format('MM/DD/YYYY');
+  var startTime = unixConvert.format('hh:mm');
+  var clockStart = unixConvert.format('A');
 
-  calURL = 'https://addevent.to/dir/?client=' + ate + '&start=' + startTime + 
-            '&end=' + endTime + '&title=' + title + '&description=' + description + '&service=' + calType +
+  var unixConvertEnd = unixConvert.add(endTime, 'minutes');
+  var newEnd = unixConvertEnd.format('MM/DD/YYYY');
+  endTime = unixConvertEnd.format('hh:mm');
+  var clockEnd = unixConvertEnd.format('A');
+
+  title = encodeURIComponent(title);
+  description = encodeURIComponent(description);
+
+  calURL = 'https://addevent.to/dir/?client=' + ate + '&start=' + newStart + '&starttime=' + startTime + '&startext=' + clockStart +
+            '&end=' + newEnd + '&endtime=' + endTime + '&endtext=' + clockEnd + '&title=' + title + '&description=' + description + '&service=' + calType +
             '&date_format=MM%2FDD%2FYYYY' + '&timezone=America/Los_Angeles' + '&alarm=1440';
-  console.log(calURL);
   
   $.ajax({
       url: calURL,
