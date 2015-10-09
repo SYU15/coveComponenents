@@ -24,7 +24,6 @@ var calendarCall = function(calType, start, endTime, title, description) {
   
   $.ajax({
       url: calURL,
-      type: 'GET',
       success: function(result){
         console.log('success');
         console.log(result);

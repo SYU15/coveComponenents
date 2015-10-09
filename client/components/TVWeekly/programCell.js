@@ -1,7 +1,7 @@
 var React = require('react');
 var moment = require('moment');
-var $ = require('jquery');
 var calAPI = require('../../utils/calendarApi.js');
+var dataUtils = require('../../utils/dataProcessing.js');
 
 var ProgramCell = React.createClass({
   getInitialState: function() {
@@ -39,9 +39,9 @@ var ProgramCell = React.createClass({
     var divStyle = {
           height: (150 * (this.props.data.minutes/30)).toString()
         };
-        
+    var current = moment().format('HHmm');  
     return (
-      <div style={divStyle} className="react-cell" onClick={this.hideDropdown}>
+      <div style={divStyle} className="react-cell" onClick={this.hideDropdown} id={this.props.position === 0 ? dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, current, 'KQED') : '' ? 'react-weekly-anchor':''}>
       <div className="ui basic segment" onClick={this.show} style={divStyle}>
           <h5 className="ui header">{this.props.data.title}
             <div className="sub header" onClick={this.show}>{this.formatTime(this.props.data.start_time)}</div>
