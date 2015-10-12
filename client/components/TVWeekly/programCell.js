@@ -10,6 +10,11 @@ var ProgramCell = React.createClass({
       dropdown: false
     };
   },
+  getDefaultProps: function() {
+    return {
+      currentTime: moment().format('HHmm')
+    };
+  },
   shortenTitle: function(title) {
     //shorten title for blocks less than 30 minutes long
     if(title.length > 50 && this.props.data.minutes < 30) {
@@ -28,8 +33,7 @@ var ProgramCell = React.createClass({
     calAPI(calendarType, this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description);
   },
   componentDidMount: function() {
-    var current = moment().format('HHmm');
-    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, current, 'KQED')) {
+    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
       var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
       var setScroll = function() {
         actions.setWeeklyScroll(anchorPosition);
@@ -50,9 +54,8 @@ var ProgramCell = React.createClass({
     var divStyle = {
           height: (150 * (this.props.data.minutes/30)).toString()
         };
-    var current = moment().format('HHmm');
     return (
-      <div style={divStyle} className="react-cell" onClick={this.hideDropdown} id={this.props.position !== 0 ? "" : !dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, current, 'KQED') ? "" : "react-weekly-anchor"}>
+      <div style={divStyle} className="react-cell" onClick={this.hideDropdown} id={this.props.position !== 0 ? "" : !dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED') ? "" : "react-weekly-anchor"}>
       <div className="ui basic segment" onClick={this.show} style={divStyle}>
           <h5 className="ui header">{this.props.data.title}
             <div className="sub header" onClick={this.show}>{this.formatTime(this.props.data.start_time)}</div>
