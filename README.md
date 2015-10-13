@@ -21,6 +21,10 @@ An extendable library of React Components ingesting KQED's media-api-service
   - Watches for changes in bundle and refresh accordingly
 - Go to localhost:3000 in browser 
 
+## Enabling calendar functionality using AddThisEvent
+- [AddThisEvent](https://addthisevent.com/) calendar API requires a paid subscription API key to work
+- To use your API key, copy or rename client/components/config/ate-example.js to ate.js and add your API Key
+
 ## Export an individual component
 - Create an output folder in the top level directory of the project
 - In the terminal run ``gulp exportComponent --component COMPONENT_TOP_LEVEL_FOLDER_NAME``

@@ -6,7 +6,9 @@ var watchify = require('watchify');
 var browserSync = require('browser-sync').create();
 var babelify = require('babelify');
 var argv = require('yargs').argv;
-var uglify = require('gulp-uglify')
+var uglify = require('gulp-uglify');
+var envify = require('envify');
+var uglifyify = require('uglifyify');
 
 //abstracts this section so it can be reused
 var bundle = function(bundler) {
@@ -32,6 +34,9 @@ var bundleComponent = function(bundler, source, component) {
   
   return bundler
   //converts JSX to javascript, also ES6 functionality
+    // .transform(babelify, envify({
+    //   NODE_ENV: 'production'
+    // }))
     .transform(babelify)
     .bundle()
     .on('error', function(e){
