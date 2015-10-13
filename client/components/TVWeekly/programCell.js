@@ -1,12 +1,18 @@
 var React = require('react');
 var moment = require('moment');
-var $ = require('jquery');
 var calAPI = require('../../utils/calendarApi.js');
+var dataUtils = require('../../utils/dataProcessing.js');
+var actions = require('../../actions/appActions.js');
 
 var ProgramCell = React.createClass({
   getInitialState: function() {
     return {
       dropdown: false
+    };
+  },
+  getDefaultProps: function() {
+    return {
+      currentTime: moment().format('HHmm')
     };
   },
   shortenTitle: function(title) {
@@ -26,6 +32,15 @@ var ProgramCell = React.createClass({
     var description = this.props.data.episode_description || this.props.data.description;
     calAPI(calendarType, this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description);
   },
+  componentDidMount: function() {
+    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
+      var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
+      var setScroll = function() {
+        actions.setWeeklyScroll(anchorPosition);
+      };
+      setTimeout(setScroll, 100);
+    }
+  },
   hideDropdown: function() {
     if(this.state.dropdown) {
       this.setState({dropdown: false});
@@ -39,9 +54,8 @@ var ProgramCell = React.createClass({
     var divStyle = {
           height: (150 * (this.props.data.minutes/30)).toString()
         };
-        
     return (
-      <div style={divStyle} className="react-cell" onClick={this.hideDropdown}>
+      <div style={divStyle} className="react-cell" onClick={this.hideDropdown} id={this.props.position !== 0 ? "" : !dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED') ? "" : "react-weekly-anchor"}>
       <div className="ui basic segment" onClick={this.show} style={divStyle}>
           <h5 className="ui header">{this.props.data.title}
             <div className="sub header" onClick={this.show}>{this.formatTime(this.props.data.start_time)}</div>

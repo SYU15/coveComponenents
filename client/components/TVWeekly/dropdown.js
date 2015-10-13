@@ -15,6 +15,9 @@ var Dropdown = React.createClass({
         onChange: function() {
           var channel = $('.ui.dropdown').dropdown('get value');
           actions.changeWeeklyStation(channel);
+          
+          var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
+          actions.setWeeklyScroll(anchorPosition);
         }
       });
   },

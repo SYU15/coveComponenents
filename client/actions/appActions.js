@@ -74,13 +74,13 @@ var AppActions = {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.WEEKLY,
       channel: channel
-    }); 
+    });
   },
   getWeeklyData: function() {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.PENDING_WEEKLY
     });
-    
+
     $.ajax({
         url: 'http://mediaapiservice-vpc.elasticbeanstalk.com/v1.0/tv/listings_week/kqed/',
         type: 'GET',
@@ -102,6 +102,12 @@ var AppActions = {
         }
     });
   },
+  setWeeklyScroll: function(scrollPosition) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.ANCHOR_LOADED,
+      scrollPosition: scrollPosition
+    });   
+  }
 };
 
 AppActions.getData = debounce(AppActions.getData, 250);

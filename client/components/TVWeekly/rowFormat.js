@@ -40,7 +40,7 @@ var RowFormat = React.createClass({
         return (
           <div className="two wide column" key={i}>
              <MobileTimeHeader data={this.props.week[i]} />
-            <ProgramColumn data={day} />
+            <ProgramColumn data={day} position={i} />
           </div>
           );
       });

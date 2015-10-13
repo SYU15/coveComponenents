@@ -16,15 +16,14 @@ var calendarCall = function(calType, start, endTime, title, description) {
   var clockEnd = unixConvertEnd.format('A');
 
   title = encodeURIComponent(title);
-  description = encodeURIComponent(description);
+  description = encodeURIComponent(description+ ' (Schedule is subject to change)');
 
   calURL = 'https://addevent.to/dir/?client=' + ate + '&start=' + newStart + '&starttime=' + startTime + '&startext=' + clockStart +
-            '&end=' + newEnd + '&endtime=' + endTime + '&endtext=' + clockEnd + '&title=' + title + '&description=' + description + '&service=' + calType +
-            '&date_format=MM%2FDD%2FYYYY' + '&timezone=America/Los_Angeles' + '&alarm=1440';
+            '&end=' + newEnd + '&endtime=' + endTime + '&endext=' + clockEnd + '&title=' + title + '&description=' + description + '&service=' + calType +
+            '&date_format=MM%2FDD%2FYYYY&timezone=America/Los_Angeles&alarm=1440&all_day_event=false';
   
   $.ajax({
       url: calURL,
-      type: 'GET',
       success: function(result){
         console.log('success');
         console.log(result);
