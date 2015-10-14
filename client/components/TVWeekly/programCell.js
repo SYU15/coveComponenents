@@ -29,8 +29,6 @@ var ProgramCell = React.createClass({
     return moment(time, 'HHmm').format('h:mm A');
   },
   calendarHandler: function(calendarType) {
-    var description = this.props.data.episode_description || this.props.data.description;
-    calAPI(calendarType, this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description);
   },
   componentDidMount: function() {
     if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
@@ -54,6 +52,8 @@ var ProgramCell = React.createClass({
     var divStyle = {
           height: (150 * (this.props.data.minutes/30)).toString()
         };
+    var description = this.props.data.episode_description || this.props.data.description;
+    
     return (
       <div style={divStyle} className="react-cell" onClick={this.hideDropdown} id={this.props.position !== 0 ? "" : !dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED') ? "" : "react-weekly-anchor"}>
       <div className="ui basic segment" onClick={this.show} style={divStyle}>
@@ -64,11 +64,11 @@ var ProgramCell = React.createClass({
           <div className="ui bottom attached basic label addthisevent-drop" onClick={this.dropdownToggle}>
             <i className="small calendar outline icon"><span className="addthisevent-title">Add to Cal</span></i>
             <span className={this.state.dropdown ? "addthisevent_dropdown addthisevent_show" : "addthisevent_dropdown"}>
-              <span className="ateappleical" onClick={this.calendarHandler.bind(this,'appleical')}>Apple iCalendar</span>
-              <span className="ategoogle" onClick={this.calendarHandler.bind(this,'google')}>Google</span>
-              <span className="ateoutlook" onClick={this.calendarHandler.bind(this,'outlook')}>Outlook</span>
-              <span className="ateoutlookcom" onClick={this.calendarHandler.bind(this,'outlookcom')}>Outlook.com</span>
-              <span className="ateyahoo" onClick={this.calendarHandler.bind(this,'yahoo')}>Yahoo</span>
+              <a className="ateappleical" href={calAPI('appleical', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Apple iCalendar</a>
+              <a className="ategoogle" target="_blank" href={calAPI('google', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Google</a>
+              <a className="ateoutlook" href={calAPI('outlook', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Outlook</a>
+              <a className="ateoutlookcom" target="_blank" href={calAPI('outlookcom', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Outlook.com</a>
+              <a className="ateyahoo" target="_blank" href={calAPI('yahoo', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Yahoo</a>
             </span>
           </div>
         </div>

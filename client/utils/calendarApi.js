@@ -21,18 +21,7 @@ var calendarCall = function(calType, start, endTime, title, description) {
   calURL = 'https://addevent.to/dir/?client=' + ate + '&start=' + newStart + '&starttime=' + startTime + '&startext=' + clockStart +
             '&end=' + newEnd + '&endtime=' + endTime + '&endext=' + clockEnd + '&title=' + title + '&description=' + description + '&service=' + calType +
             '&date_format=MM%2FDD%2FYYYY&timezone=America/Los_Angeles&alarm=1440&all_day_event=false';
-  
-  $.ajax({
-      url: calURL,
-      success: function(result){
-        console.log('success');
-        console.log(result);
-      },
-      error: function(result) {
-        console.log('error');
-        console.log(result);
-      }
-  });
+  return calURL;
 };
 
 module.exports = calendarCall;

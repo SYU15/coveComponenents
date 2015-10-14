@@ -33,11 +33,6 @@ var bundleComponent = function(bundler, source, component) {
   gutil.log('Bundling ' + component);
   
   return bundler
-  //converts JSX to javascript, also ES6 functionality
-    // .transform(babelify, envify({
-    //   NODE_ENV: 'production'
-    // }))
-    .transform(babelify)
     .bundle()
     .on('error', function(e){
       gutil.log(e);
@@ -81,11 +76,17 @@ gulp.task('browserify', function() {
 gulp.task('exportComponent', function() {
   var component = argv.component;
   if(component === 'TVScheduleTab') {
-    bundleComponent(browserify('./client/components/TVScheduleTab/render.js'), source('reactDailySchedule.js'), component);
+    bundleComponent(browserify({
+     'entries': ['./client/components/TVScheduleTab/render.js'],
+     'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}]] 
+    }), source('reactDailySchedule.js'), component);
     gutil.log('Component will save to output/reactDailySchedule.js');
     gutil.log('Component will look for an an element with an id of TVTab');
   } else if(component === 'TVWeekly') {
-    bundleComponent(browserify('./client/components/TVWeekly/render.js'), source('reactWeeklySchedule.js'), component);
+    bundleComponent(browserify({
+     'entries': ['./client/components/TVWeekly/render.js'],
+     'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}]] 
+    }), source('reactWeeklySchedule.js'), component);
     gutil.log('Component will save to output/reactWeekly.js');
     gutil.log('Component will look for an an element with an id of weeklySchedule');
   } else {
