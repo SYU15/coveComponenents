@@ -44,7 +44,9 @@ var dataUtils = {
         var shouldAnchor = this.currentShow(listings[i].start_time, listings[i].minutes, current, key);
         newStation.shows.push({id: id, show: listings[i].title, 
                                 time: formatTime, 
+                                episode: listings[i].episode_title,
                                 description: listings[i].description,
+                                timestamp: listings[i].timestamp,
                                 isPrime: isPrime,
                                 shouldAnchor: shouldAnchor,
                                 minutes: listings[i].minutes

@@ -102,6 +102,7 @@ h5.ui.header .sub.header {
 .addthisevent_dropdown .copyx       {height:21px;display:block;position:relative;cursor:default;}
 .addthisevent_dropdown .brx       {height:1px;overflow:hidden;background:#e0e0e0;position:absolute;z-index:100;left:10px;right:10px;top:9px;}
 .addthisevent_show {display: block;}
+.addthisevent_dropdown_left {margin-left:-112px;}
 
 @media (max-width: 1060px) {
   .react-dropdown {
