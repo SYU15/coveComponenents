@@ -15,6 +15,7 @@ var TVList = React.createClass({
           height: (100 * Math.round(this.props.data.minutes/30)).toString()
         };
         //only add anchor id to entry that broadcast time is within is current time range
+        //this will be refactored to remove sliding animation
         return (
           <div id={this.props.data.shouldAnchor ? "anchor" : ""}>
             <div className={!this.props.data.isPrime && !this.props.shouldShow ? "react-should-hide" : ""}>
