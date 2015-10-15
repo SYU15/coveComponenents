@@ -64,7 +64,7 @@ var ProgramCell = React.createClass({
             <i className="react-small-description">{this.props.data.episode_title ? this.shortenTitle(this.props.data.episode_title) : ''}</i>
           </h5>
           <div className="ui bottom attached basic label addthisevent-drop" onClick={this.dropdownToggle}>
-            <i className="small calendar outline icon"><span className="addthisevent-title">Add to Cal</span></i>
+            <i className="small calendar outline icon"></i><span className="addthisevent-title">Add to Cal</span>
             <span className={this.state.dropdown ? "addthisevent_dropdown addthisevent_show" : "addthisevent_dropdown"}>
               <a className="ateappleical" href={calAPI('appleical', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Apple iCalendar</a>
               <a className="ategoogle" target="_blank" href={calAPI('google', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Google</a>

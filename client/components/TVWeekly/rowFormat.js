@@ -4,6 +4,8 @@ var ProgramColumn = require('./programColumn.js');
 var weeklyStore = require('../../stores/weeklyStores.js');
 var MobileTimeHeader = require('./mobileTimeHeader.js');
 var Dropdown = require('./dropdown.js');
+// var $ = require('jquery');
+// require('sticky');
 
 var RowFormat = React.createClass({
   //weeklyStore sets current channel
@@ -16,6 +18,11 @@ var RowFormat = React.createClass({
    };
   },
   componentDidMount: function() {
+    // $('.ui.sticky')
+    //   .sticky({
+    //   context: 'react-grid-scroll'
+    // });
+    
     weeklyStore.addChangeListener(this.onChange);
   },
   componentWillUnmount: function() {
