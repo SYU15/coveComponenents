@@ -15,6 +15,19 @@ var ProgramCell = React.createClass({
       currentTime: moment().format('HHmm')
     };
   },
+  componentDidMount: function() {
+    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
+      var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
+      var setScroll = function() {
+        actions.setWeeklyScroll(anchorPosition);
+      };
+      setTimeout(setScroll, 100);
+      this.hideDropdown();
+    }
+  },
+  componentWillReceiveProps: function() {
+    this.hideDropdown();
+  },
   shortenTitle: function(title) {
     //shorten title for blocks less than 30 minutes long
     if(title.length > 50 && this.props.data.minutes < 30) {
@@ -27,17 +40,6 @@ var ProgramCell = React.createClass({
   },
   formatTime: function(time) {
     return moment(time, 'HHmm').format('h:mm A');
-  },
-  calendarHandler: function(calendarType) {
-  },
-  componentDidMount: function() {
-    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
-      var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
-      var setScroll = function() {
-        actions.setWeeklyScroll(anchorPosition);
-      };
-      setTimeout(setScroll, 100);
-    }
   },
   hideDropdown: function() {
     if(this.state.dropdown) {
