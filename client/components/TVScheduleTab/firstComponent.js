@@ -41,12 +41,16 @@ var First = React.createClass({
             var rows = <div className="ui error message"><div className="header"><i className="warning circle icon"></i>An error occurred. Please check back later.</div></div>
           }
           return (
-            <div className="ui one column  grid">
-              <div className="sixteen wide column">
-                 <div className="ui pointing secondary tabs menu">
-                  {sidebarStations}
-                  <DatePicker date={this.props.date}/>
-                  <PrimeButton />
+            <div className="ui one column grid">
+              <div className="column">
+                <div className="ui stackable sixteen column grid">
+                <div className="ten wide column">
+                   <div className="ui pointing secondary tabs menu">
+                    {sidebarStations}
+                  </div>
+                  </div>
+                    <DatePicker date={this.props.date}/>
+                    <PrimeButton />
                 </div>
                   {rows === undefined ? '' : rows}
                 <i className={rows === undefined ? 'huge notched circle loading icon' : ''}></i>

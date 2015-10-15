@@ -33,7 +33,6 @@ var SidebarEntry = React.createClass({
         $('.react-schedule-tab.active').scrollTop(this.state.scrollPosition);
       },
       clickHandler: function() {
-        var tabs = $('.react-schedule-tab.active');
         actions.scroll(this.state.scrollPosition);
       },
       render: function() {

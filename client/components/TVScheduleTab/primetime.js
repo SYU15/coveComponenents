@@ -17,12 +17,15 @@ var PrimeButton = React.createClass({
   },
   clickHandler: function() {
     actions.primetime();
+    // actions.scroll(0);
   },
   render: function() {
   return (
-    <a onClick={this.clickHandler} className="ui large basic label">
-      {this.state.shouldShow === true ? 'Evening' : 'Full Schedule'}
-    </a>
+    <div className="three wide column">
+      <a onClick={this.clickHandler} className="ui large basic label">
+        {this.state.shouldShow === true ? 'Evening' : 'Full Schedule'}
+      </a>
+    </div>
     );
   }
 });

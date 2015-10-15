@@ -5,10 +5,16 @@ var Arrow = require('./arrow.js');
 var DatePicker = React.createClass({
   render: function() {
   return (
-    <div className="three column grid react-date">
-      <Arrow direction="previous" />
-      <DateDisplay date={this.props.date} />
-      <Arrow direction="next" />
+    <div className="three wide column">
+      <div className="column">
+        <div className="ui three column grid">
+          <div className="three column row">
+            <Arrow direction="previous" />
+            <DateDisplay date={this.props.date} />
+            <Arrow direction="next" />
+          </div>
+        </div>
+      </div>
     </div>
     );  
   }
