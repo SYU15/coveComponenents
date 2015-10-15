@@ -15,6 +15,19 @@ var ProgramCell = React.createClass({
       currentTime: moment().format('HHmm')
     };
   },
+  componentDidMount: function() {
+    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
+      var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
+      var setScroll = function() {
+        actions.setWeeklyScroll(anchorPosition);
+      };
+      setTimeout(setScroll, 100);
+      this.hideDropdown();
+    }
+  },
+  componentWillReceiveProps: function() {
+    this.hideDropdown();
+  },
   shortenTitle: function(title) {
     //shorten title for blocks less than 30 minutes long
     if(title.length > 50 && this.props.data.minutes < 30) {
@@ -27,17 +40,6 @@ var ProgramCell = React.createClass({
   },
   formatTime: function(time) {
     return moment(time, 'HHmm').format('h:mm A');
-  },
-  calendarHandler: function(calendarType) {
-  },
-  componentDidMount: function() {
-    if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
-      var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
-      var setScroll = function() {
-        actions.setWeeklyScroll(anchorPosition);
-      };
-      setTimeout(setScroll, 100);
-    }
   },
   hideDropdown: function() {
     if(this.state.dropdown) {
@@ -62,7 +64,7 @@ var ProgramCell = React.createClass({
             <i className="react-small-description">{this.props.data.episode_title ? this.shortenTitle(this.props.data.episode_title) : ''}</i>
           </h5>
           <div className="ui bottom attached basic label addthisevent-drop" onClick={this.dropdownToggle}>
-            <i className="small calendar outline icon"><span className="addthisevent-title">Add to Cal</span></i>
+            <i className="small calendar outline icon"></i><span className="addthisevent-title">Add to Cal</span>
             <span className={this.state.dropdown ? "addthisevent_dropdown addthisevent_show" : "addthisevent_dropdown"}>
               <a className="ateappleical" href={calAPI('appleical', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Apple iCalendar</a>
               <a className="ategoogle" target="_blank" href={calAPI('google', this.props.data.timestamp, this.props.data.minutes, this.props.data.title, description)}>Google</a>

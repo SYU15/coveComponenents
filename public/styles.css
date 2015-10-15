@@ -11,7 +11,6 @@ html{
 -moz-box-sizing:border-box;
 box-sizing:border-box;
 }
-
 .react-schedule-tab {
   height: 500px;
   overflow: auto;
@@ -55,28 +54,11 @@ box-sizing:border-box;
   margin-bottom: 0.85rem !important;
 }
 
-@media (max-width: 1060px) {
-  .react-dropdown {
-    font-size: 12px;
-    margin-bottom: 1.355rem !important;
-  }
+.react-small-description {
+  font-size: 10px;
+  line-height: 0;
+  font-weight: 200;
 }
-
-@media (max-width: 767px) {
-  .react-grid-scroll {
-    height: auto;
-  }
-  .react-mobile-hide {
-    display: none;
-  }
-  .react-dropdown {
-    font-size: 18px;
-    width: 200px !important;
-    display:block !important;
-    margin: auto !important;
-  }
-}
-
 
 div.two.wide.column {
   padding: 0 !important;
@@ -86,11 +68,6 @@ div.two.wide.column {
   margin: auto !important;
 }
 
-.react-small-description {
-  font-size: 10px;
-  line-height: 0;
-  font-weight: 200;
-}
 
 h5.ui.header {
   font-size: .8rem;
@@ -125,3 +102,35 @@ h5.ui.header .sub.header {
 .addthisevent_dropdown .copyx       {height:21px;display:block;position:relative;cursor:default;}
 .addthisevent_dropdown .brx       {height:1px;overflow:hidden;background:#e0e0e0;position:absolute;z-index:100;left:10px;right:10px;top:9px;}
 .addthisevent_show {display: block;}
+
+@media (max-width: 1060px) {
+  .react-dropdown {
+    font-size: 10px;
+    margin-bottom: 1.88rem !important;
+  }
+}
+
+@media (max-width: 835px) {
+  .react-small-description {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .react-grid-scroll {
+    height: auto;
+  }
+  .react-mobile-hide {
+    display: none;
+  }
+  .react-dropdown {
+    font-size: 18px;
+    width: 200px !important;
+    display:block !important;
+    margin: auto !important;
+  }
+  .react-small-description {
+    display: block;
+    line-height: 1.5;
+  }
+}
