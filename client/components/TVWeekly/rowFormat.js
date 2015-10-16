@@ -4,8 +4,6 @@ var ProgramColumn = require('./programColumn.js');
 var weeklyStore = require('../../stores/weeklyStores.js');
 var MobileTimeHeader = require('./mobileTimeHeader.js');
 var Dropdown = require('./dropdown.js');
-// var $ = require('jquery');
-// require('sticky');
 
 var RowFormat = React.createClass({
   //weeklyStore sets current channel
@@ -18,11 +16,6 @@ var RowFormat = React.createClass({
    };
   },
   componentDidMount: function() {
-    // $('.ui.sticky')
-    //   .sticky({
-    //   context: 'react-grid-scroll'
-    // });
-    
     weeklyStore.addChangeListener(this.onChange);
   },
   componentWillUnmount: function() {
@@ -30,9 +23,12 @@ var RowFormat = React.createClass({
   },
   onChange: function() {
     this.setState(weeklyStore.getChannel());
+  },
+  getScrollWidth: function() {
+    var scrollDiv = document.getElementById("scroll");
+     return scrollDiv.parentNode.offsetWidth - scrollDiv.offsetWidth;
   }, 
   render: function() {
-
     var rows = this.props.day.map((hour, i) => {
       return (
         <div key={i}>
@@ -40,13 +36,15 @@ var RowFormat = React.createClass({
         </div>
         );
     });
-
+    var mobileHeaders = [];
     //checks to see if data is valid AJAX data
     if(this.props.data && Array.isArray(this.props.data[this.state.channel])) {
       var rows2 = this.props.data[this.state.channel].map((day, i) => {
+        var header = <div className="computer tablet only two wide column" key={i}><MobileTimeHeader data={this.props.week[i]} /></div>;
+        mobileHeaders.push(header);
         return (
           <div className="two wide column" key={i}>
-             <MobileTimeHeader data={this.props.week[i]} />
+              <div className="react-computer-hide"><MobileTimeHeader data={this.props.week[i]} /></div>
             <ProgramColumn data={day} position={i} />
           </div>
           );
@@ -56,11 +54,16 @@ var RowFormat = React.createClass({
     }
     //shows loading wheel in places of rows2 if AJAX data hasn't loaded yet
     return (
-          <div className="ui equal width internally celled stackable grid react-grid-scroll">
-            <div className="two wide column"><Dropdown /><div className="react-mobile-hide">{rows}</div></div>
-            {rows2}
-            <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>
+        <div>
+        <div className="ui equal width internally celled stackable grid">
+          <div className="two wide column"><Dropdown /></div>{mobileHeaders}
+        </div>
+          <div className="ui equal width internally celled stackable grid react-grid-scroll" id="scroll">
+              <div className="two wide column"><div className="react-mobile-hide">{rows}</div></div>
+              {rows2}
+              <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>
           </div>
+        </div>
         );
   }
 });

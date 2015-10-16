@@ -68,6 +68,10 @@ div.two.wide.column {
   margin: auto !important;
 }
 
+.react-computer-hide {
+  display: none;
+}
+
 .ui.secondary.pointing.menu {
   border-bottom: none;
 }
@@ -136,5 +140,8 @@ h5.ui.header .sub.header {
   .react-small-description {
     display: block;
     line-height: 1.5;
+  }
+  .react-computer-hide {
+    display: inherit;
   }
 }
