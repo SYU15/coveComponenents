@@ -24,10 +24,6 @@ var RowFormat = React.createClass({
   onChange: function() {
     this.setState(weeklyStore.getChannel());
   },
-  getScrollWidth: function() {
-    var scrollDiv = document.getElementById("scroll");
-     return scrollDiv.parentNode.offsetWidth - scrollDiv.offsetWidth;
-  }, 
   render: function() {
     var rows = this.props.day.map((hour, i) => {
       return (
@@ -55,10 +51,10 @@ var RowFormat = React.createClass({
     //shows loading wheel in places of rows2 if AJAX data hasn't loaded yet
     return (
         <div>
-        <div className="ui equal width internally celled stackable grid">
+        <div className="ui equal width internally celled stackable grid react-menu-padding">
           <div className="two wide column"><Dropdown /></div>{mobileHeaders}
         </div>
-          <div className="ui equal width internally celled stackable grid react-grid-scroll" id="scroll">
+          <div className="ui equal width internally celled stackable grid react-grid-scroll">
               <div className="two wide column"><div className="react-mobile-hide">{rows}</div></div>
               {rows2}
               <i className={rows2 === undefined ? 'huge notched circle loading icon react-center-icon' : ''}></i>

@@ -83,6 +83,10 @@ h5.ui.header {
 h5.ui.header .sub.header {
   font-size: .8rem;
 }
+/*this will need to be refactored to adjust to scroll position*/
+.react-menu-padding {
+  padding-right: 1.4% !important;
+}
 
 /* General */
 /*.addthisevent                 {visibility:hidden;}
