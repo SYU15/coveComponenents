@@ -67,7 +67,7 @@ var AppActions = {
     AppDispatcher.handleViewAction({
       actionType: AppConstants.SCROLL,
       scrollPosition: scrollPosition
-    });   
+    });
   },
   //actions used by TV Weekly Schedule start here (used by weeklyStores)
   changeWeeklyStation: function(channel) {
