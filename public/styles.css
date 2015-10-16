@@ -28,7 +28,7 @@ box-sizing:border-box;
 }
 
 .react-small-item {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .react-should-hide {
@@ -68,6 +68,9 @@ div.two.wide.column {
   margin: auto !important;
 }
 
+.ui.secondary.pointing.menu {
+  border-bottom: none;
+}
 
 h5.ui.header {
   font-size: .8rem;

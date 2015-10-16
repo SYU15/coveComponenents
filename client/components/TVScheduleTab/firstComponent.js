@@ -43,14 +43,18 @@ var First = React.createClass({
           return (
             <div className="ui one column grid">
               <div className="column">
-                <div className="ui stackable sixteen column grid">
+                <div className="ui mobile reversed stackable sixteen column grid">
                 <div className="ten wide column">
-                   <div className="ui pointing secondary tabs menu">
+                   <div className="ui pointing secondary tabs menu react-tabs-menu">
                     {sidebarStations}
                   </div>
                   </div>
-                    <DatePicker date={this.props.date}/>
-                    <PrimeButton />
+                    <div className="six wide column">
+                    <div className="ui six column grid">
+                      <DatePicker date={this.props.date}/>
+                      <PrimeButton />
+                    </div>
+                    </div>
                 </div>
                   {rows === undefined ? '' : rows}
                 <i className={rows === undefined ? 'huge notched circle loading icon' : ''}></i>
