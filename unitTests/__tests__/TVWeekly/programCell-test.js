@@ -1,16 +1,21 @@
 jest.dontMock('../../../client/components/TVWeekly/programCell');
 jest.dontMock('moment');
 jest.dontMock('jquery');
+jest.dontMock('../../../client/utils/calendarApi.js');
+jest.dontMock('moment');
+jest.dontMock('../../../client/config/ate.js');
 
 describe('Program Cell for Weekly Schedule', function() {
   var ProgramCell;
   var React;
   var TestUtils;
   var data;
+  var ate;
   beforeEach(function() {
     React = require('react/addons');
     TestUtils = React.addons.TestUtils;
     ProgramCell = require('../../../client/components/TVWeekly/programCell');
+    ate = require('../../../client/config/ate-example.js');
     data = {
       minutes: 30,
       start_time: "0000",
@@ -38,23 +43,6 @@ describe('Program Cell for Weekly Schedule', function() {
     expect(showTime[0].getDOMNode().textContent).toEqual('12:00 AM');
     expect(showDescription[0].getDOMNode().textContent).toEqual('Test Episode Title');
     
-  });
-
-  it('should populate addthisevent calendar with correct fields', function(){
-    var programCell = TestUtils.renderIntoDocument(<ProgramCell data={data} />);
-    
-    var start = TestUtils.scryRenderedDOMComponentsWithClass(programCell, 'start');
-    var end = TestUtils.scryRenderedDOMComponentsWithClass(programCell, 'end');
-    var title = TestUtils.scryRenderedDOMComponentsWithClass(programCell, 'title');
-    var description = TestUtils.scryRenderedDOMComponentsWithClass(programCell, 'description');
-    var dateFormat = TestUtils.scryRenderedDOMComponentsWithClass(programCell, 'date_format');
-    
-    expect(start[0].props.children).toEqual('10/06/2015 12:00 AM');
-    expect(end[0].props.children).toEqual('10/06/2015 12:30 AM');
-    expect(title[0].props.children).toEqual('Test Title');
-    expect(description[0].props.children).toEqual('Test episode description');
-    expect(dateFormat[0].props.children).toEqual('10/06/2015');
-
   });
 
   it('should shorten a description if the block is less than 30 minutes and description is longer than 50 characters', function(){ 

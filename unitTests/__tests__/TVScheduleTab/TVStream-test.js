@@ -2,19 +2,24 @@
 jest.dontMock('../../../client/components/TVScheduleTab/TVStream');
 jest.dontMock('jquery');
 jest.dontMock('../../../client/components/TVScheduleTab/TVList');
+jest.dontMock('../../../client/utils/calendarApi.js');
+jest.dontMock('moment');
+jest.dontMock('../../../client/config/ate.js');
 
 describe('TV Schedule Date Display', function() {
   var TVStream;
   var React;
   var TestUtils;
   var TVList;
-  var input = {station: "KQED", shows: [{id: 1, show: "Show1", description: "A Show."}, {id: 2, show: "Show2"}]};
+  var input = {station: "KQED", shows: [{id: 1, show: "Show1", episode: "A Show."}, {id: 2, show: "Show2"}]};
   var shouldShow = true;
+  var ate;
   beforeEach(function() {
     React = require('react/addons');
     TestUtils = React.addons.TestUtils;
     TVStream = require('../../../client/components/TVScheduleTab/TVStream');
     TVList = require('../../../client/components/TVScheduleTab/TVList');
+    ate = require('../../../client/config/ate-example.js');
 
   });
   it('should exist', function() {
@@ -24,7 +29,7 @@ describe('TV Schedule Date Display', function() {
   it('should display TV Lists with show information', function(){
     var tvStream = TestUtils.renderIntoDocument(<TVStream shouldShow={shouldShow} data={input} />);
     var showTitle = TestUtils.scryRenderedDOMComponentsWithClass(tvStream, 'ui dividing header');
-    var showDescription = TestUtils.scryRenderedDOMComponentsWithClass(tvStream, 'hidden content react-whitespace-fix');
+    var showDescription = TestUtils.scryRenderedDOMComponentsWithClass(tvStream, 'react-episode');
     expect(showTitle.length).toEqual(2);
     expect(showDescription.length).toEqual(2);
     
@@ -32,7 +37,7 @@ describe('TV Schedule Date Display', function() {
     expect(showTitle[1].getDOMNode().textContent).toEqual('Show2');
 
     expect(showDescription[0].getDOMNode().firstChild.textContent).toEqual('A Show.');
-    expect(showDescription[1].getDOMNode().firstChild.textContent).toEqual('No Description Available.');
+    expect(showDescription[1].getDOMNode().firstChild.textContent).toEqual('');
 
   });
   it('should set position of scrollbar to the current time program', function(){
