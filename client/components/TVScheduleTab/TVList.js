@@ -34,7 +34,7 @@ var TVList = React.createClass({
                       <div className="ui dividing header">{this.props.data.show}</div>
                       {this.props.data.time}
                     </div>
-                    <p><i>{this.props.data.episode}</i></p>
+                    <p className="react-episode"><i>{this.props.data.episode}</i></p>
                     <div className="ui bottom right attached basic label addthisevent-drop" onClick={this.dropdownToggle}>
                       <i className="small calendar outline icon"></i><span className="addthisevent-title">Add to Cal</span>
                     <span className={this.state.dropdown ? "addthisevent_dropdown addthisevent_show addthisevent_dropdown_left" : "addthisevent_dropdown addthisevent_dropdown_left"}>
