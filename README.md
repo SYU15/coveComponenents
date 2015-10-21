@@ -4,7 +4,7 @@
 An extendable library of React Components ingesting KQED's media-api-service
 
 ## Requirements
-- Node.js
+- Node.js ^4.x.x
 - npm
 - bower
 - gulp
