@@ -6,3 +6,4 @@ before_script:
   - npm install --dev
   - npm install -g bower
   - bower install
+  - cp client/config/ate-example.js client/config/ate.js
