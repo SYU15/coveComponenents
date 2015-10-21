@@ -3,6 +3,8 @@
 ## About
 An extendable library of React Components ingesting KQED's media-api-service
 
+[![Build Status](https://travis-ci.org/SYU88/coveComponenents.svg?branch=travisCI)](https://travis-ci.org/SYU88/coveComponenents)
+
 ## Requirements
 - Node.js ^4.x.x
 - npm
