@@ -24,11 +24,9 @@ var First = React.createClass({
         //implements semantic ui javascript behavior
         $('.menu .item').tab();
       },
-
       componentDidUpdate: function() {
         $('.menu .item').tab();
       },
-
       render: function() {
           var sidebarStations = [];
           //check to see if AJAX data has loaded

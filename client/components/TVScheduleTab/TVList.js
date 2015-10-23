@@ -7,6 +7,9 @@ var TVList = React.createClass({
           dropdown: false
         };
       },
+      mixins: [
+        require('react-onclickoutside')
+      ],
       componentWillReceiveProps: function() {
         this.hideDropdown();
       },
@@ -17,6 +20,11 @@ var TVList = React.createClass({
       },
       dropdownToggle: function() {
         this.setState({dropdown: !this.state.dropdown});
+      },
+      handleClickOutside: function(evt) {
+        if(this.state.dropdown) {
+          this.setState({dropdown: false});
+        }
       },
       render: function() {
         //inline style to calculate height of entry based on number of minutes

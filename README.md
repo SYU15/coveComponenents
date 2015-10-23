@@ -10,7 +10,6 @@ An extendable library of React Components ingesting KQED's media-api-service
 - npm
 - bower
 - gulp
-- nodemon
 
 ## Getting Started
 - Clone/Fork the repo
@@ -33,6 +32,10 @@ An extendable library of React Components ingesting KQED's media-api-service
   - For example, to export the TV tabs, you should run ``gulp exportComponent --component TVScheduleTab``
 - The gulp task will create a file in the output folder that you can use in projects
   - The console will log out where the id name of the element that the component will render to, or you can check the file.
+
+## Export an individual component for production
+- Create an output folder in the top level directory of the project
+- In the terminal run ``gulp production --component COMPONENT_TOP_LEVEL_FOLDER_NAME``
 
 ## Testing
 - To run testing suite in the terminal:

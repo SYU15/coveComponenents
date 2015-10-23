@@ -15,6 +15,9 @@ var ProgramCell = React.createClass({
       currentTime: moment().format('HHmm')
     };
   },
+  mixins: [
+    require('react-onclickoutside')
+  ],
   componentDidMount: function() {
     if(this.isMounted() && this.props.position === 0 && dataUtils.currentShow(this.props.data.start_time, this.props.data.minutes, this.props.currentTime, 'KQED')) {
       var anchorPosition = document.getElementById('react-weekly-anchor').offsetTop;
@@ -48,6 +51,11 @@ var ProgramCell = React.createClass({
   },
   dropdownToggle: function() {
     this.setState({dropdown: !this.state.dropdown});
+  },
+  handleClickOutside: function(evt) {
+    if(this.state.dropdown) {
+      this.setState({dropdown: false});
+    }
   },
   render: function() {
     //sets height of each program based on number of minutes

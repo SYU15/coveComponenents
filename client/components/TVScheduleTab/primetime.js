@@ -1,6 +1,7 @@
 var React = require('react');
 var actions = require('../../actions/appActions.js');
 var primeStore = require('../../stores/primeStores.js');
+var $ = require('jquery');
 
 var PrimeButton = React.createClass({
   getInitialState: function() {
@@ -16,8 +17,8 @@ var PrimeButton = React.createClass({
     this.setState(primeStore.getToggle());
   },
   clickHandler: function() {
+    $('.react-schedule-tab').scrollTop(0);
     actions.primetime();
-    // actions.scroll(0);
   },
   render: function() {
   return (

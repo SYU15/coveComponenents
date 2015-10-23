@@ -9,6 +9,8 @@ var argv = require('yargs').argv;
 var uglify = require('gulp-uglify');
 var envify = require('envify');
 var uglifyify = require('uglifyify');
+var eslint = require('gulp-eslint');
+var rename = require('gulp-rename');
 
 //abstracts this section so it can be reused
 var bundle = function(bundler) {
@@ -44,10 +46,44 @@ var bundleComponent = function(bundler, source, component) {
     
 };
 
+gulp.task('lint', function() {
+  return gulp.src('client/**/**/*.js')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('prodComponent', function() {
+  var component = argv.component;
+  if(component === 'TVScheduleTab') {
+    bundleComponent(browserify({
+     'entries': ['./client/components/TVScheduleTab/render.js'],
+     'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}], [uglifyify]] 
+    }), source('reactDailySchedule.min.js'), component);
+    gutil.log('Component will save to output/production/reactDailySchedule.min.js');
+    gutil.log('Component will look for an an element with an id of TVTab');
+  } else if(component === 'TVWeekly') {
+  bundleComponent(browserify({
+   'entries': ['./client/components/TVWeekly/render.js'],
+   'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}]] 
+  }), source('reactWeeklySchedule.min.js'), component);
+    gutil.log('Component will save to output/production/reactWeeklySchedule.min.js');
+    gutil.log('Component will look for an an element with an id of weeklySchedule');
+  }
+
+});
+
 gulp.task('uglify', function(){
-  return gulp.src('public/bundle.js')
-    .pipe(uglify({mangle: false}))
-    .pipe(gulp.dest('output/'));
+  var component = argv.component;
+  if(component === 'TVScheduleTab') {  
+    return gulp.src('output/reactDailySchedule.min.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('output/production/'));
+  } else if(component === 'TVWeekly') { 
+    return gulp.src('output/reactWeeklySchedule.min.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('output/production/'));
+  }
 });
 
 gulp.task('watch', function(){
@@ -70,7 +106,7 @@ gulp.task('watch', function(){
 });
 
 gulp.task('browserify', function() {
-  return bundle(browserify('./client/App.js'))
+  return bundle(browserify('./client/App.js'));
 });
 
 gulp.task('exportComponent', function() {
@@ -87,7 +123,7 @@ gulp.task('exportComponent', function() {
      'entries': ['./client/components/TVWeekly/render.js'],
      'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}]] 
     }), source('reactWeeklySchedule.js'), component);
-    gutil.log('Component will save to output/reactWeekly.js');
+    gutil.log('Component will save to output/reactWeeklySchedule.js');
     gutil.log('Component will look for an an element with an id of weeklySchedule');
   } else {
     gutil.log(component + ' is not a KQED library component');
@@ -95,3 +131,7 @@ gulp.task('exportComponent', function() {
 });
 
 gulp.task('default',['watch']);
+
+gulp.task('eslint', ['lint']);
+
+gulp.task('production', ['prodComponent', 'uglify']);
