@@ -33,7 +33,7 @@ var WeeklyTable = React.createClass({
       return(
           <div> 
             <RowFormat data={this.props.data} week={this.props.week} />
-        </div>
+          </div>
         );
     }
 });

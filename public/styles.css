@@ -129,9 +129,9 @@ h5.ui.header .sub.header {
 }
 
 @media (max-width: 768px) {
-  .react-grid-scroll {
+  /*.react-grid-scroll {
     height: auto;
-  }
+  }*/
   .react-mobile-hide {
     display: none;
   }
@@ -147,5 +147,14 @@ h5.ui.header .sub.header {
   }
   .react-computer-hide {
     display: inherit;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-episode {
+    font-size: 10px;
+  }
+  .react-small-item {
+    font-size: 10px;
   }
 }
