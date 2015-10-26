@@ -65,7 +65,7 @@ gulp.task('prodComponent', function() {
   } else if(component === 'TVWeekly') {
   bundleComponent(browserify({
    'entries': ['./client/components/TVWeekly/render.js'],
-   'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}]] 
+   'transform': [[babelify], ['envify', {'global': true, NODE_ENV: 'production'}], [uglifyify]] 
   }), source('reactWeeklySchedule.min.js'), component);
     gutil.log('Component will save to output/production/reactWeeklySchedule.min.js');
     gutil.log('Component will look for an an element with an id of weeklySchedule');
