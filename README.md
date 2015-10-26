@@ -35,6 +35,7 @@ An extendable library of React Components ingesting KQED's media-api-service
 
 ## Export an individual component for production
 - Create an output/production folder
+- Run ``export NODE_ENV=production`` in the terminal
 - In the terminal run ``gulp production --component COMPONENT_TOP_LEVEL_FOLDER_NAME``
 
 ## Testing
